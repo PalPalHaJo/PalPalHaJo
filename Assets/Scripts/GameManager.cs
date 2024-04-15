@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public int cardCount = 0;
+
     public Card firstCard;
     public Card secondCard;
 
