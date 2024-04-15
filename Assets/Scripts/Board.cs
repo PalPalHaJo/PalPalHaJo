@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Linq;
+using UnityEngine.UIElements;
 
 
 
@@ -36,5 +37,7 @@ public class Board : MonoBehaviour
             GameObject go = Instantiate(card, this.transform);
             go.transform.position = new Vector2(x,y);
         }
+
+        GameManager.Instance.cardCount = arr.Length;
     }
 }
