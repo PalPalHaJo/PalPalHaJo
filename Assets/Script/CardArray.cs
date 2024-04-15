@@ -18,6 +18,7 @@ public class Board : MonoBehaviour
 
     public void Setting(int number)
     {
-      
+      idx = number;
+        Resources.Load<Sprite>($"TeamEight{idx}");
     }
 }
