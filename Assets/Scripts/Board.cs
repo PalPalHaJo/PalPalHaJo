@@ -38,6 +38,6 @@ public class Board : MonoBehaviour
             go.transform.position = new Vector2(x,y);
         }
 
-        //GameManager.instance.cardCount = arr.Length;
+        GameManager.instance.cardCount = arr.Length;
     }
 }
