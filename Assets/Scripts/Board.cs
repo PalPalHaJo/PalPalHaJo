@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.Linq;
+using UnityEngine.UIElements;
 
 
 
 public class Board : MonoBehaviour
 {
     [Tooltip("카드 프리팹")]
-    [SerializeField] GameObject card;         // 카드 프리팹
+    public GameObject card;         // 카드 프리팹
     [Tooltip("생성할 카드의 총수량, 4배수만 가능")]
     [SerializeField] int totalCardCnt = 16;   // 총 카드 수량
     [Tooltip("카드 간격")]
@@ -36,5 +37,7 @@ public class Board : MonoBehaviour
             GameObject go = Instantiate(card, this.transform);
             go.transform.position = new Vector2(x,y);
         }
+
+        GameManager.Instance.cardCount = arr.Length;
     }
 }
