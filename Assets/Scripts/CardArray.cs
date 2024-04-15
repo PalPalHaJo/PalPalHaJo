@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Card : MonoBehaviour
 {
+    int idx = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Setting(int number)
+    {
+      idx = number;
+        Resources.Load<Sprite>($"TeamEight{idx}");
     }
 }
