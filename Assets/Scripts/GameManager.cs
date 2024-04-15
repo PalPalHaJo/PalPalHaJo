@@ -1,28 +1,27 @@
 
 using System.Threading;
-using TMPro;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager instance;
+
+    public Card firstCard;
+    public Card secondCard;
 
     public Text timeTxt;
-    public GameObject endTxt;
-
-    public int cardCount = 0;
 
     float time = 0.0f;
 
     private void Awake()
     {
-        if (Instance == null)
+        if(instance == null)
         {
-            Instance = this;
+            instance = this;
         }
     }
-
     void Start()
     {
         Time.timeScale = 1.0f;
@@ -32,11 +31,23 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-        if (time > 30.0f)
+
+    }
+
+    public void Matched()
+    {
+        if(firstCard.idx == secondCard.idx) 
         {
-            endTxt.SetActive(true);
-            Time.timeScale = 0.0f;
+            firstCard.DestoryCard();
+            secondCard.DestoryCard();
+        }
+        else
+        {
+            firstCard.CloseCard();
+            secondCard.CloseCard();
         }
 
+        firstCard = null;
+        secondCard = null;
     }
 }
