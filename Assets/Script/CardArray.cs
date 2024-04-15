@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MonoBehaviour
+public class Card : MonoBehaviour
 {
+    int idx = 0;
     // Start is called before the first frame update
     void Start()
     {
