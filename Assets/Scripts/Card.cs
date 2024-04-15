@@ -6,12 +6,19 @@ public class Card : MonoBehaviour
 {
     public int idx = 0;
 
+
     public GameObject front;
     public GameObject back;
 
     public Animator anim;
 
     public SpriteRenderer FrontImage;
+
+    //카드의 애니메이터 변수
+    Animator animator;
+    //앞면과 뒷면 오브젝트
+    GameObject[] cards = new GameObject[2];
+
     // Start is called before the first frame update
     void Start()
     {
