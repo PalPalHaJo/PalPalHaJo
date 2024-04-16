@@ -14,7 +14,7 @@ public class Card : MonoBehaviour
     [SerializeField]
     float fDelayTime = 1.0f;
 
-    SpriteRenderer FrontImage;
+    public SpriteRenderer FrontImage;
     // Start is called before the first frame update
     void Start()
     {
