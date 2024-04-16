@@ -14,11 +14,11 @@ public class Card : MonoBehaviour
     [SerializeField]
     float fDelayTime = 1.0f;
 
-    SpriteRenderer FrontImage;
+    public SpriteRenderer FrontImage;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class Card : MonoBehaviour
     public void Setting(int number)
     {
         idx = number;
-        FrontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
+        FrontImage.sprite = Resources.Load<Sprite>($"Images/TeamEight{idx}");
     }
 
     public void OpenCard()
