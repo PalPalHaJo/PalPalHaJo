@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager
 {
-    public string strFilePath;
+    string filePath = Path.Combine(Application.dataPath, "userData.json");
 
     [ContextMenu("To Json Data")]
     public void SaveToJson()
     {
-        string strJsonData = JsonUtility.ToJson(GameManager.instance.saveData);
+        string strJsonData = JsonUtility.ToJson(SystemManager.instance.saveData);
 
-        string path = Path.Combine(Application.dataPath, "userData.json");
-
-        File.WriteAllText(path, strJsonData);
+        File.WriteAllText(filePath, strJsonData);
     }
 
     public void LoadToJson()
     {
-        string path = Path.Combine(Application.dataPath, "userData.json");
-        
-        string jsonData = File.ReadAllText(path);
+        if (!File.Exists(filePath))
+        {
+            SaveData saveData = new SaveData();
+            SaveToJson();
+        }
 
-        GameManager.instance.saveData = JsonUtility.FromJson<saveData>(jsonData);
+        string jsonData = File.ReadAllText(filePath);
+
+        SystemManager.instance.saveData = JsonUtility.FromJson<SaveData>(jsonData);
     }
 }
 
 [System.Serializable]
-public class saveData
+public class SaveData
 {
     public Stage[] stage;
 }
