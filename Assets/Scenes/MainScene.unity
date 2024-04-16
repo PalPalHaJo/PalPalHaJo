@@ -216,7 +216,7 @@ Transform:
   - {fileID: 1227596970}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &626037427
+--- !u!1001 &1145327663
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -230,11 +230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6764039833900966175, guid: 3af26868ea5d835449e0ae80f6b73871, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12222147
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764039833900966175, guid: 3af26868ea5d835449e0ae80f6b73871, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5795469
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764039833900966175, guid: 3af26868ea5d835449e0ae80f6b73871, type: 3}
       propertyPath: m_LocalPosition.z
@@ -716,7 +716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eedeb00591199b4384a0c456e65f23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardCount: 0
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   timeTxt: {fileID: 1340201124}
@@ -727,4 +726,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1229395009}
   - {fileID: 2117721468}
-  - {fileID: 626037427}
+  - {fileID: 1145327663}
