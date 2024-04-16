@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
         }
-
+        
         firstCard = null;
         secondCard = null;
     }
