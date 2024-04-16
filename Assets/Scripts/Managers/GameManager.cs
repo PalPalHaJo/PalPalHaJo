@@ -18,8 +18,16 @@ public class GameManager : MonoBehaviour
     //30초에서 시간 줄어들기
     float time = 30.0f;
 
+    //유저 저장데이터
+    public saveData saveData;
+
+    //카드 파괴 지연시간
+    public float fDelayTime = 1.0f;
+
+    float time = 0.0f;
     //게임 끝내기 END 띄우기 변수 선언
     public GameObject endTxt;
+
 
     private void Awake()
     {
@@ -66,8 +74,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            firstCard.CloseCard();
-            secondCard.CloseCard();
+            firstCard.CloseCard(fDelayTime);
+            secondCard.CloseCard(fDelayTime);
         }
 
         firstCard = null;
