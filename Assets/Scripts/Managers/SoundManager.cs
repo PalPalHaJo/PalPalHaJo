@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
 
     Dictionary<string, AudioClip> BGM;  // 배경음악 Dictionary
 
-    private void Start()
+    public void Init()
     {
         BGM = new Dictionary<string, AudioClip>();
 
