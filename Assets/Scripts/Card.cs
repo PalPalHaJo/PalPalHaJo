@@ -5,20 +5,16 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int idx = 0;
-    //오픈카드로직 변수
+
     public GameObject front;
-    //꺼줘야 하는 게임변수
     public GameObject back;
-    //애니메이션 변수
+
     public Animator anim;
-    //카드 이미지 불러오기 변수
-    public SpriteRenderer frontImage;
+    //카드 파괴 지연시간
+    [SerializeField]
+    float fDelayTime = 1.0f;
 
-    //카드의 애니메이터 변수
-    Animator animator;
-    //앞면과 뒷면 오브젝트
-    GameObject[] cards = new GameObject[2];
-
+    SpriteRenderer FrontImage;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +29,8 @@ public class Card : MonoBehaviour
 
     public void Setting(int number)
     {
-      idx = number;
-        frontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
+        idx = number;
+        FrontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
     }
 
     public void OpenCard()
@@ -47,7 +43,6 @@ public class Card : MonoBehaviour
         {
             GameManager.instance.firstCard = this;
         }
-
         else
         {
             GameManager.instance.secondCard = this;
@@ -55,24 +50,39 @@ public class Card : MonoBehaviour
         }
     }
 
+    //두 카드의 인덱스가 같을 시 호출되어 카드를 파괴하는 함수
     public void DestoryCard()
     {
-        Invoke("DestroyCardInvok", 1.0f);
+        //DelayDestroy()코루틴을 시작해라
+        StartCoroutine(DelayDestroy());
     }
 
-    void DestroyCardInvoke()
+    //카드 파괴를 fDelayTime만큼 지연 후 실행하는 코루틴
+    IEnumerator DelayDestroy()
     {
+        //딜레이 시간만큼 기다린 후
+        yield return new WaitForSeconds(fDelayTime);
+        //게임 오브젝트를 파괴
         Destroy(gameObject);
     }
+
+    //두 카드의 인덱스가 다를 시 호출되어 카드를 원상태로 만드는 함수
     public void CloseCard()
     {
-        Invoke("CloseCardInvok", 1.0f);
+        //DelayClose()코루틴을 시작해라
+        StartCoroutine(DelayClose());      
     }
 
-    void CloseCardInvok()
+    //카드 뒤집기를 fDelayTime만큼 지연 후 실행하는 코루틴
+    IEnumerator DelayClose()
     {
+        //딜레이 시간만큼 기다린 후
+        yield return new WaitForSeconds(fDelayTime);
+        //카드의 애니메이션 상태를 Idle로 되돌린다.
         anim.SetBool("isOpen", false);
+        //그림이 있는 앞면 오브젝트를 비활성화 한다.
         front.SetActive(false);
+        //'?'가 적힌 뒷면 오브젝트를 활성화 한다.
         back.SetActive(true);
     }
 }
