@@ -21,9 +21,8 @@ public class GameManager : MonoBehaviour
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
 
-    float time = 0.0f;
     //게임 끝내기 END 띄우기 변수 선언
-    public GameObject endTxt;
+    public GameObject endPanel;
 
 
     private void Awake()
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
-            endTxt.SetActive(true);
+            endPanel.SetActive(true);
             Time.timeScale = 0.0f;
         }
 
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endTxt.SetActive(true);
+                endPanel.SetActive(true);
             }
         }
         else
