@@ -11,6 +11,7 @@ public struct BgmType
     public AudioClip clip;    // 음악 클립
 }
 
+[System.Serializable]
 public class SoundManager
 {   
     AudioSource audioSource;

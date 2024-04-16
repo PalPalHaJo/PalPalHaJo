@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        recordText.text = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString();
+        string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
+        recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
         Time.timeScale = 1.0f;
     }
