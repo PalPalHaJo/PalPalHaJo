@@ -65,10 +65,10 @@ public class Card : MonoBehaviour
     {
         //'fCountDownTime'초 대기 후
         yield return new WaitForSeconds(fCountDownTime);
-        //게임매니저의 첫번째 카드에 등록된 정보를 초기화
-        GameManager.instance.firstCard = null;
         //해당카드를 뒤집기 위한 메소드
         CloseCard(0);
+        //게임매니저의 첫번째 카드에 등록된 정보를 초기화
+        GameManager.instance.firstCard = null;
     }
 
     //두 카드의 인덱스가 같을 시 호출되어 카드를 파괴하는 함수
