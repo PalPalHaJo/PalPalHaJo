@@ -34,6 +34,7 @@ public class Board : MonoBehaviour
             go.GetComponent<Card>().Setting(arr[i]);
         }
 
+        //게임끝내기 위한 배열 수 읽어오기
         GameManager.instance.cardCount = arr.Length;
     }
 }
