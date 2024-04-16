@@ -45,30 +45,29 @@ public class Card : MonoBehaviour
         if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
-            //�ι��� ī�� ���ñ��� ī��Ʈ �ٿ��ϴ� �ڷ�ƾ ����
+            //두번쨰 카드 선택까지 카운트 다운하는 코루틴 시작
             StartCoroutine(CountDown());
         }
         else
         {
-            //�ι�° ī�� ���ý� �ڷ�ƾ �ߴ�
+            //두번째 카드 선택시 코루틴 중단
             StopCoroutine(CountDown());
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched();
         }
     }
 
-
-    //5�� �� ù��° �����ϴ� ī�带 �ǵ���
+    //5초 후 첫번째 선택하는 카드를 되돌림
     IEnumerator CountDown()
     {
-        //'fCountDownTime'�� ��� ��
+        //'fCountDownTime'초 대기 후
         yield return new WaitForSeconds(fCountDownTime);
-        //���ӸŴ����� ù��° ī�忡 ��ϵ� ������ �ʱ�ȭ
+        //게임매니저의 첫번째 카드에 등록된 정보를 초기화
         GameManager.instance.firstCard = null;
-        //�ش�ī�带 ������ ���� �޼ҵ�
+        //해당카드를 뒤집기 위한 메소드
         CloseCard();
     }
-    
+
     //두 카드의 인덱스가 같을 시 호출되어 카드를 파괴하는 함수
     public void DestoryCard()
     {
