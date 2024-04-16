@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
+    //카드 파괴 지연시간
+    public float fDelayTime = 1.0f;
+
     float time = 0.0f;
 
     private void Awake()
@@ -44,8 +47,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            firstCard.CloseCard();
-            secondCard.CloseCard();
+            firstCard.CloseCard(fDelayTime);
+            secondCard.CloseCard(fDelayTime);
         }
 
         firstCard = null;
