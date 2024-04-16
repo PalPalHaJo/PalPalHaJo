@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
 
     public Text timeTxt;
 
-    //유저 저장데이터
-    public saveData saveData;
-
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
 
