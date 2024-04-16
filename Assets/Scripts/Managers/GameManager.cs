@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     //싱글톤 만들기 위한 변수
     public static GameManager instance;
 
+    public int tryCount = 0; //시도횟수 변수 선언
     public int cardCount = 0;
     public Card firstCard;
     public Card secondCard;
@@ -68,6 +69,10 @@ public class GameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            //틀릴 경우 시간 감소하기
+            time -= 0.5f;
+            //틀릴 경우 시도횟수 추가하기
+            tryCount += 1;
         }
 
         firstCard = null;
