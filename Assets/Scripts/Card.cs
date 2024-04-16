@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     public GameObject back;
 
     public Animator anim;
-    //Ä«µå ÆÄ±« Áö¿¬½Ã°£
+    //ì¹´ë“œ íŒŒê´´ ì§€ì—°ì‹œê°„
     [SerializeField]
     float fDelayTime = 1.0f;
 
@@ -18,19 +18,19 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Setting(int number)
     {
         idx = number;
-        FrontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
+        FrontImage.sprite = Resources.Load<Sprite>($"Images/TeamEight{idx}");
     }
 
     public void OpenCard()
@@ -39,7 +39,7 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        if(GameManager.instance.firstCard == null)
+        if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
         }
@@ -50,39 +50,39 @@ public class Card : MonoBehaviour
         }
     }
 
-    //µÎ Ä«µåÀÇ ÀÎµ¦½º°¡ °°À» ½Ã È£ÃâµÇ¾î Ä«µå¸¦ ÆÄ±«ÇÏ´Â ÇÔ¼ö
+    //ë‘ ì¹´ë“œì˜ ì¸ë±ìŠ¤ê°€ ê°™ì„ ì‹œ í˜¸ì¶œë˜ì–´ ì¹´ë“œë¥¼ íŒŒê´´í•˜ëŠ” í•¨ìˆ˜
     public void DestoryCard()
     {
-        //DelayDestroy()ÄÚ·çÆ¾À» ½ÃÀÛÇØ¶ó
+        //DelayDestroy()ì½”ë£¨í‹´ì„ ì‹œì‘í•´ë¼
         StartCoroutine(DelayDestroy());
     }
 
-    //Ä«µå ÆÄ±«¸¦ fDelayTime¸¸Å­ Áö¿¬ ÈÄ ½ÇÇàÇÏ´Â ÄÚ·çÆ¾
+    //ì¹´ë“œ íŒŒê´´ë¥¼ fDelayTimeë§Œí¼ ì§€ì—° í›„ ì‹¤í–‰í•˜ëŠ” ì½”ë£¨í‹´
     IEnumerator DelayDestroy()
     {
-        //µô·¹ÀÌ ½Ã°£¸¸Å­ ±â´Ù¸° ÈÄ
+        //ë”œë ˆì´ ì‹œê°„ë§Œí¼ ê¸°ë‹¤ë¦° í›„
         yield return new WaitForSeconds(fDelayTime);
-        //°ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+        //ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´
         Destroy(gameObject);
     }
 
-    //µÎ Ä«µåÀÇ ÀÎµ¦½º°¡ ´Ù¸¦ ½Ã È£ÃâµÇ¾î Ä«µå¸¦ ¿ø»óÅÂ·Î ¸¸µå´Â ÇÔ¼ö
+    //ë‘ ì¹´ë“œì˜ ì¸ë±ìŠ¤ê°€ ë‹¤ë¥¼ ì‹œ í˜¸ì¶œë˜ì–´ ì¹´ë“œë¥¼ ì›ìƒíƒœë¡œ ë§Œë“œëŠ” í•¨ìˆ˜
     public void CloseCard()
     {
-        //DelayClose()ÄÚ·çÆ¾À» ½ÃÀÛÇØ¶ó
-        StartCoroutine(DelayClose());      
+        //DelayClose()ì½”ë£¨í‹´ì„ ì‹œì‘í•´ë¼
+        StartCoroutine(DelayClose());
     }
 
-    //Ä«µå µÚÁı±â¸¦ fDelayTime¸¸Å­ Áö¿¬ ÈÄ ½ÇÇàÇÏ´Â ÄÚ·çÆ¾
+    //ì¹´ë“œ ë’¤ì§‘ê¸°ë¥¼ fDelayTimeë§Œí¼ ì§€ì—° í›„ ì‹¤í–‰í•˜ëŠ” ì½”ë£¨í‹´
     IEnumerator DelayClose()
     {
-        //µô·¹ÀÌ ½Ã°£¸¸Å­ ±â´Ù¸° ÈÄ
+        //ë”œë ˆì´ ì‹œê°„ë§Œí¼ ê¸°ë‹¤ë¦° í›„
         yield return new WaitForSeconds(fDelayTime);
-        //Ä«µåÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ¸¦ Idle·Î µÇµ¹¸°´Ù.
+        //ì¹´ë“œì˜ ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœë¥¼ Idleë¡œ ë˜ëŒë¦°ë‹¤.
         anim.SetBool("isOpen", false);
-        //±×¸²ÀÌ ÀÖ´Â ¾Õ¸é ¿ÀºêÁ§Æ®¸¦ ºñÈ°¼ºÈ­ ÇÑ´Ù.
+        //ê·¸ë¦¼ì´ ìˆëŠ” ì•ë©´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë¹„í™œì„±í™” í•œë‹¤.
         front.SetActive(false);
-        //'?'°¡ ÀûÈù µŞ¸é ¿ÀºêÁ§Æ®¸¦ È°¼ºÈ­ ÇÑ´Ù.
+        //'?'ê°€ ì íŒ ë’·ë©´ ì˜¤ë¸Œì íŠ¸ë¥¼ í™œì„±í™” í•œë‹¤.
         back.SetActive(true);
     }
 }
