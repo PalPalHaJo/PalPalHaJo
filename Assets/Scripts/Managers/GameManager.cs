@@ -6,34 +6,37 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //½Ì±ÛÅæ ¸¸µé±â À§ÇÑ º¯¼ö
+    //ì‹±ê¸€í†¤ ë§Œë“¤ê¸° ìœ„í•œ ë³€ìˆ˜
     public static GameManager instance;
 
     public int cardCount = 0;
     public Card firstCard;
     public Card secondCard;
 
-    //°ÔÀÓ ½Ã°£ ¼ÂÆÃÇÏ±â
+    //ê²Œì„ ì‹œê°„ ì…‹íŒ…í•˜ê¸°
     public Text timeTxt;
     float time = 0.0f;
 
+    //ê²Œì„ ëë‚´ê¸° íŒë„¬ ë„ìš°ê¸° ë³€ìˆ˜ ì„ ì–¸
+    public GameObject endTxt;
+
     private void Awake()
     {
-        //½Ì±ÛÅæ ¸¸µé±â
-        if(instance == null)
+        //ì‹±ê¸€í†¤ ë§Œë“¤ê¸°
+        if (instance == null)
         {
             instance = this;
         }
     }
     void Start()
     {
-        //°ÔÀÓ ½ÃÀÛÇÏ±â À§ÇÑ ½Ã°£ ¼ÂÆÃ
+        //ê²Œì„ ì‹œì‘í•˜ê¸° ìœ„í•œ ì‹œê°„ ì…‹íŒ…
         Time.timeScale = 1.0f;
     }
 
     void Update()
     {
-        //½Ã°£ Èå¸£°Ô ÇÏ±â, ³ëÃâ ½Ã°£ ¼Ò¼ıÁ¡ µÎÀÚ¸´¼ö
+        //ì‹œê°„ íë¥´ê²Œ í•˜ê¸°, ë…¸ì¶œ ì‹œê°„ ì†Œìˆ«ì  ë‘ìë¦¿ìˆ˜
         time += Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 

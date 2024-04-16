@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RetryBtn : MonoBehaviour
 {
-    //°ÔÀÓ ½ÃÀÛÇÏ±â ¸ŞÀÎ¾À ºÒ·¯¿À±â
+    //ê²Œì„ ì‹œì‘í•˜ê¸° ë©”ì¸ì”¬ ë¶ˆëŸ¬ì˜¤ê¸°
     public void Retry()
     {
         SceneManager.LoadScene("MainScene");
