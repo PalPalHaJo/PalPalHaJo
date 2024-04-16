@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     public GameObject back;
 
     public Animator anim;
-    //Ä«µå ÆÄ±« Áö¿¬½Ã°£
+    //ì¹´ë“œ íŒŒê´´ ì§€ì—°ì‹œê°„
     [SerializeField]
     float fDelayTime = 1.0f;
 
@@ -27,7 +27,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Setting(int number)
@@ -42,65 +42,66 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        if(GameManager.instance.firstCard == null)
+        if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
-            //µÎ¹ø¤Š Ä«µå ¼±ÅÃ±îÁö Ä«¿îÆ® ´Ù¿îÇÏ´Â ÄÚ·çÆ¾ ½ÃÀÛ
+            //ï¿½Î¹ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ® ï¿½Ù¿ï¿½ï¿½Ï´ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
             StartCoroutine(CountDown());
         }
         else
         {
-            //µÎ¹øÂ° Ä«µå ¼±ÅÃ½Ã ÄÚ·çÆ¾ Áß´Ü
+            //ï¿½Î¹ï¿½Â° Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½Ã½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ß´ï¿½
             StopCoroutine(CountDown());
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched();
         }
     }
 
-    //5ÃÊ ÈÄ Ã¹¹øÂ° ¼±ÅÃÇÏ´Â Ä«µå¸¦ µÇµ¹¸²
+
+    //5ï¿½ï¿½ ï¿½ï¿½ Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Ä«ï¿½å¸¦ ï¿½Çµï¿½ï¿½ï¿½
     IEnumerator CountDown()
     {
-        //'fCountDownTime'ÃÊ ´ë±â ÈÄ
+        //'fCountDownTime'ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½
         yield return new WaitForSeconds(fCountDownTime);
-        //°ÔÀÓ¸Å´ÏÀúÀÇ Ã¹¹øÂ° Ä«µå¿¡ µî·ÏµÈ Á¤º¸¸¦ ÃÊ±âÈ­
+        //ï¿½ï¿½ï¿½Ó¸Å´ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â° Ä«ï¿½å¿¡ ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         GameManager.instance.firstCard = null;
-        //ÇØ´çÄ«µå¸¦ µÚÁı±â À§ÇÑ ¸Ş¼Òµå
+        //ï¿½Ø´ï¿½Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
         CloseCard();
     }
-
-    //µÎ Ä«µåÀÇ ÀÎµ¦½º°¡ °°À» ½Ã È£ÃâµÇ¾î Ä«µå¸¦ ÆÄ±«ÇÏ´Â ÇÔ¼ö
+    
+    //ë‘ ì¹´ë“œì˜ ì¸ë±ìŠ¤ê°€ ê°™ì„ ì‹œ í˜¸ì¶œë˜ì–´ ì¹´ë“œë¥¼ íŒŒê´´í•˜ëŠ” í•¨ìˆ˜
     public void DestoryCard()
     {
-        //DelayDestroy()ÄÚ·çÆ¾À» ½ÃÀÛÇØ¶ó
+        //DelayDestroy()ì½”ë£¨í‹´ì„ ì‹œì‘í•´ë¼
         StartCoroutine(DelayDestroy());
     }
 
-    //Ä«µå ÆÄ±«¸¦ fDelayTime¸¸Å­ Áö¿¬ ÈÄ ½ÇÇàÇÏ´Â ÄÚ·çÆ¾
+    //ì¹´ë“œ íŒŒê´´ë¥¼ fDelayTimeë§Œí¼ ì§€ì—° í›„ ì‹¤í–‰í•˜ëŠ” ì½”ë£¨í‹´
     IEnumerator DelayDestroy()
     {
-        //µô·¹ÀÌ ½Ã°£¸¸Å­ ±â´Ù¸° ÈÄ
+        //ë”œë ˆì´ ì‹œê°„ë§Œí¼ ê¸°ë‹¤ë¦° í›„
         yield return new WaitForSeconds(fDelayTime);
-        //°ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+        //ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´
         Destroy(gameObject);
     }
 
-    //µÎ Ä«µåÀÇ ÀÎµ¦½º°¡ ´Ù¸¦ ½Ã È£ÃâµÇ¾î Ä«µå¸¦ ¿ø»óÅÂ·Î ¸¸µå´Â ÇÔ¼ö
+    //ë‘ ì¹´ë“œì˜ ì¸ë±ìŠ¤ê°€ ë‹¤ë¥¼ ì‹œ í˜¸ì¶œë˜ì–´ ì¹´ë“œë¥¼ ì›ìƒíƒœë¡œ ë§Œë“œëŠ” í•¨ìˆ˜
     public void CloseCard()
     {
-        //DelayClose()ÄÚ·çÆ¾À» ½ÃÀÛÇØ¶ó
-        StartCoroutine(DelayClose());      
+        //DelayClose()ì½”ë£¨í‹´ì„ ì‹œì‘í•´ë¼
+        StartCoroutine(DelayClose());
     }
 
-    //Ä«µå µÚÁı±â¸¦ fDelayTime¸¸Å­ Áö¿¬ ÈÄ ½ÇÇàÇÏ´Â ÄÚ·çÆ¾
+    //ì¹´ë“œ ë’¤ì§‘ê¸°ë¥¼ fDelayTimeë§Œí¼ ì§€ì—° í›„ ì‹¤í–‰í•˜ëŠ” ì½”ë£¨í‹´
     IEnumerator DelayClose()
     {
-        //µô·¹ÀÌ ½Ã°£¸¸Å­ ±â´Ù¸° ÈÄ
+        //ë”œë ˆì´ ì‹œê°„ë§Œí¼ ê¸°ë‹¤ë¦° í›„
         yield return new WaitForSeconds(fDelayTime);
-        //Ä«µåÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç »óÅÂ¸¦ Idle·Î µÇµ¹¸°´Ù.
+        //ì¹´ë“œì˜ ì• ë‹ˆë©”ì´ì…˜ ìƒíƒœë¥¼ Idleë¡œ ë˜ëŒë¦°ë‹¤.
         anim.SetBool("isOpen", false);
-        //±×¸²ÀÌ ÀÖ´Â ¾Õ¸é ¿ÀºêÁ§Æ®¸¦ ºñÈ°¼ºÈ­ ÇÑ´Ù.
+        //ê·¸ë¦¼ì´ ìˆëŠ” ì•ë©´ ì˜¤ë¸Œì íŠ¸ë¥¼ ë¹„í™œì„±í™” í•œë‹¤.
         front.SetActive(false);
-        //'?'°¡ ÀûÈù µŞ¸é ¿ÀºêÁ§Æ®¸¦ È°¼ºÈ­ ÇÑ´Ù.
+        //'?'ê°€ ì íŒ ë’·ë©´ ì˜¤ë¸Œì íŠ¸ë¥¼ í™œì„±í™” í•œë‹¤.
         back.SetActive(true);
     }
 }
