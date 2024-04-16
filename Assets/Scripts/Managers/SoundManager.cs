@@ -17,6 +17,8 @@ public class SoundManager
 
     public void Init(AudioSource audioSource)
     {
+        // this.audioSource : 사운드매니저의 audioSource
+        // audioSource : 시스템매니저의 audioSource
         this.audioSource = audioSource;  
     }
 

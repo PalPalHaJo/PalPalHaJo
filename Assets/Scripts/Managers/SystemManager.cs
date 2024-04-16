@@ -15,13 +15,14 @@ public class SystemManager : MonoBehaviour
 
     public SaveData saveData;
     public BgmType[] bgmList;
+
     // public SoundManager SM => instance.soundManager; // 간단하게 가져올 수 있게함
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            s_SoundManager.Init(GetComponent<AudioSource>());
+            s_SoundManager.Init(GetComponent<AudioSource>()); // 시스템매니저에서 사운드매니저로 AudioSource 넘김
             DontDestroyOnLoad(gameObject); // 씬을 이동해도 사운드매니저가 삭제되지 않음
         }
         else // 이미 존재할 때
@@ -33,7 +34,7 @@ public class SystemManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60; // 어떤 기기든지 1초에 60번만 계산될 수 있게끔 설정
-        soundManager.PlayBGM(bgmList[0]); // 인트로씬 배경음악 재생
+        s_SoundManager.PlayBGM(bgmList[0]); // 인트로씬 배경음악 재생
         data.LoadToJson();
     }
 
