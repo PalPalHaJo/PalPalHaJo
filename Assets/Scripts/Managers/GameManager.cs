@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     //30초에서 시간 줄어들기
     float time = 30.0f;
+    //카드 매칭 시도횟수
+    public int cardTry = 0;
 
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
