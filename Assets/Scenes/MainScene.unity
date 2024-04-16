@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eedeb00591199b4384a0c456e65f23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardCount: 0
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   timeTxt: {fileID: 1340201124}
