@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
 
-    float time = 0.0f;
     //게임 끝내기 END 띄우기 변수 선언
     public GameObject endTxt;
 
