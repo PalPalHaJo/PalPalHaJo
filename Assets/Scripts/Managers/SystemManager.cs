@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SystemManager : MonoBehaviour
@@ -29,7 +30,8 @@ public class SystemManager : MonoBehaviour
 
     void Start()
     {
-        
+        //sound.Init();
+        data.LoadToJson();
     }
 
     void Update()
