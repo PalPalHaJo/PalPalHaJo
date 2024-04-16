@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,22 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance; // 싱글톤
     
-    // 사운드 관련
-    AudioSource audioSource;
-    public AudioClip clip;
+    // 배경음악 이름, 클립 묶음
+    [System.Serializable]
+    public struct BgmType
+    {
+        public string name;       // 음악 이름
+        public AudioClip clip;    // 음악 클립
+    }
+
+    // Inspector 에표시할 배경음악 목록
+    // 0 : 인트로씬 배경음악
+    // 1 : 인게임씬 배경음악
+    public BgmType[] BGMList;
+
+    private AudioSource audioSource;
+
+    Dictionary<string, AudioClip> BGM;  // 배경음악 Dictionary
 
     private void Awake()
     {
@@ -27,8 +41,26 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        BGM = new Dictionary<string, AudioClip>();
+
+        // 배경음악 목록을 딕셔너리에 등록
+        for (int i = 0; i < BGMList.Length; i++)
+        {
+            BGM.Add(BGMList[i].name, BGMList[i].clip);
+        }
+        
+        // 인트로씬 배경음악 재생
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = this.clip;
+        audioSource.clip = BGM["IntroBGM"];
+
+        audioSource.Play(); // 지속적인 재생
+    }
+
+    // 인게임씬 배경음악 재생
+    public void ChangeInGameBGM()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = BGM["InGameBGM"];
 
         audioSource.Play(); // 지속적인 재생
     }

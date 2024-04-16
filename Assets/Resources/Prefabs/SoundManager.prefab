@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246dc7de10196184fa3f03eebfe96693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 74dcaad7f567b9349acde0ccdb5421a9, type: 3}
+  BGMList:
+  - name: IntroBGM
+    clip: {fileID: 8300000, guid: ecf32e7da80937e42a8f03b355cb7fd6, type: 3}
+  - name: InGameBGM
+    clip: {fileID: 8300000, guid: 74dcaad7f567b9349acde0ccdb5421a9, type: 3}
 --- !u!82 &9172881961628684328
 AudioSource:
   m_ObjectHideFlags: 0
