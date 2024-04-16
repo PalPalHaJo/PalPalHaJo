@@ -25,7 +25,7 @@ public class Board : MonoBehaviour
 
 
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
-        arr = arr.OrderBy(x => Random.Range(0f, 7f).ToString()).ToArray();
+        arr = arr.OrderBy(x => Random.Range(0f, 7f)).ToArray();
 
 
 
@@ -36,6 +36,7 @@ public class Board : MonoBehaviour
 
             GameObject go = Instantiate(card, this.transform);
             go.transform.position = new Vector2(x,y);
+            go.GetComponent<Card>().Setting(arr[i]);
         }
 
         GameManager.instance.cardCount = arr.Length;

@@ -5,14 +5,14 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public int idx = 0;
-
-
+    //오픈카드로직 변수
     public GameObject front;
+    //꺼줘야 하는 게임변수
     public GameObject back;
-
+    //애니메이션 변수
     public Animator anim;
-
-    public SpriteRenderer FrontImage;
+    //카드 이미지 불러오기 변수
+    public SpriteRenderer frontImage;
 
     //카드의 애니메이터 변수
     Animator animator;
@@ -34,7 +34,7 @@ public class Card : MonoBehaviour
     public void Setting(int number)
     {
       idx = number;
-        FrontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"TeamEight{idx}");
     }
 
     public void OpenCard()
