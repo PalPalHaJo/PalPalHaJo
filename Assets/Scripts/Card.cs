@@ -14,11 +14,14 @@ public class Card : MonoBehaviour
     [SerializeField]
     float fDelayTime = 1.0f;
 
+    [SerializeField]
+    float fCountDownTime = 3.0f;
+
     public SpriteRenderer FrontImage;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -42,14 +45,30 @@ public class Card : MonoBehaviour
         if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
+            //�ι��� ī�� ���ñ��� ī��Ʈ �ٿ��ϴ� �ڷ�ƾ ����
+            StartCoroutine(CountDown());
         }
         else
         {
+            //�ι�° ī�� ���ý� �ڷ�ƾ �ߴ�
+            StopCoroutine(CountDown());
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched();
         }
     }
 
+
+    //5�� �� ù��° �����ϴ� ī�带 �ǵ���
+    IEnumerator CountDown()
+    {
+        //'fCountDownTime'�� ��� ��
+        yield return new WaitForSeconds(fCountDownTime);
+        //���ӸŴ����� ù��° ī�忡 ��ϵ� ������ �ʱ�ȭ
+        GameManager.instance.firstCard = null;
+        //�ش�ī�带 ������ ���� �޼ҵ�
+        CloseCard();
+    }
+    
     //두 카드의 인덱스가 같을 시 호출되어 카드를 파괴하는 함수
     public void DestoryCard()
     {
