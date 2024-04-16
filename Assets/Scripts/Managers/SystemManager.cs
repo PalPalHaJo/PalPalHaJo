@@ -5,6 +5,12 @@ using UnityEngine;
 public class SystemManager : MonoBehaviour
 {
     public static SystemManager instance;
+    
+    DataManager s_DataManager = new DataManager();
+    public static DataManager data { get{ return SystemManager.instance.s_DataManager; }}
+
+    SoundManager s_SoundManager = new SoundManager();
+    public static SoundManager sound { get { return SystemManager.instance.s_SoundManager; }}
 
     public SaveData saveData;
 
