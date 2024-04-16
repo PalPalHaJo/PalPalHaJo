@@ -45,7 +45,7 @@ public class Card : MonoBehaviour
         if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
-
+            //�ι��� ī�� ���ñ��� ī��Ʈ �ٿ��ϴ� �ڷ�ƾ ����
             StartCoroutine(CountDown());
         }
         else
@@ -58,14 +58,14 @@ public class Card : MonoBehaviour
     }
 
 
-
+    //5�� �� ù��° �����ϴ� ī�带 �ǵ���
     IEnumerator CountDown()
     {
-
+        //'fCountDownTime'�� ��� ��
         yield return new WaitForSeconds(fCountDownTime);
-
+        //���ӸŴ����� ù��° ī�忡 ��ϵ� ������ �ʱ�ȭ
         GameManager.instance.firstCard = null;
-
+        //�ش�ī�带 ������ ���� �޼ҵ�
         CloseCard();
     }
     
