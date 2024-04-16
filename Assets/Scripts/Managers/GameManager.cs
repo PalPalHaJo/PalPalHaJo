@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public float fDelayTime = 1.0f;
 
     //게임 끝내기 END 띄우기 변수 선언
-    public GameObject endTxt;
+    public GameObject endPanel;
 
     //경고 텍스트 표시
     bool bIsWarnig = false;
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
-            endTxt.SetActive(true);
+            endPanel.SetActive(true);
             Time.timeScale = 0.0f;
             bIsPlaying = false;
         }
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endTxt.SetActive(true);
+                endPanel.SetActive(true);
             }
         }
         else
