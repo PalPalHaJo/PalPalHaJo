@@ -6,9 +6,7 @@ using UnityEngine;
 // 필요한 컴포넌트, 없으면 자동으로 추가됨
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
-{
-    public static SoundManager instance; // 싱글톤
-    
+{   
     // 배경음악 이름, 클립 묶음
     [System.Serializable]
     public struct BgmType
@@ -26,19 +24,6 @@ public class SoundManager : MonoBehaviour
 
     Dictionary<string, AudioClip> BGM;  // 배경음악 Dictionary
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // 씬을 이동해도 사운드매니저가 삭제되지 않음
-        }
-        else // 이미 존재할 때
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void Start()
     {
         BGM = new Dictionary<string, AudioClip>();
@@ -48,7 +33,10 @@ public class SoundManager : MonoBehaviour
         {
             BGM.Add(BGMList[i].name, BGMList[i].clip);
         }
-        
+    }
+
+    public void PlayIntroBGM()
+    {
         // 인트로씬 배경음악 재생
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM["IntroBGM"];
@@ -57,7 +45,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // 인게임씬 배경음악 재생
-    public void ChangeInGameBGM()
+    public void PlayInGameBGM()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM["InGameBGM"];
