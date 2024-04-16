@@ -1288,6 +1288,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3989709995473529176, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
+      propertyPath: saveData.stage.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4038190521474654536, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
       propertyPath: m_Name
       value: SystemManager
