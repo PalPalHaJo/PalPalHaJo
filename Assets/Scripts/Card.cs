@@ -15,10 +15,15 @@ public class Card : MonoBehaviour
     float fCountDownTime = 3.0f;
 
     public SpriteRenderer FrontImage;
+
+    // 카드 효과 음악
+    AudioSource audioSource;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
+        audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
