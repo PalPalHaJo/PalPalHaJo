@@ -34,7 +34,8 @@ public class SystemManager : MonoBehaviour
 
     void Start()
     {
-        soundManager.PlayBGM(bgmList[0]);
+        Application.targetFrameRate = 60; // 어떤 기기든지 1초에 60번만 계산될 수 있게끔 설정
+        soundManager.PlayBGM(bgmList[0]); // 인트로씬 배경음악 재생
         data.LoadToJson();
     }
 
