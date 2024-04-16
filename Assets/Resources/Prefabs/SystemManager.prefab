@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData:
-    stage: []
+    stage:
+    - bIsClear: 0
+      fClearTime: 0
+      fScore: 0
 --- !u!82 &8484249946376328873
 AudioSource:
   m_ObjectHideFlags: 0
