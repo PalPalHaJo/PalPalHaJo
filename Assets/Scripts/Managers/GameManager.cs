@@ -1,8 +1,11 @@
 
+using System.Collections;
 using System.Threading;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -22,8 +25,20 @@ public class GameManager : MonoBehaviour
     public float fDelayTime = 1.0f;
 
     //게임 끝내기 END 띄우기 변수 선언
-    public GameObject endTxt;
+    public GameObject endPanel;
 
+    //경고 텍스트 표시
+    bool bIsWarnig = false;
+    //경고 표시 시간
+    float fLimitTime = 10.0f;
+    //경고 텍스트 애니메이션
+    public Animator anim;
+
+    public int StageLv = 1;
+    //최고 기록 텍스트
+    public TextMeshProUGUI recordText;
+    //게임 플레이 여부
+    public bool bIsPlaying = false;
 
     private void Awake()
     {
@@ -35,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        recordText.text = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString();
         //게임 시작하기 위한 시간 셋팅
         Time.timeScale = 1.0f;
     }
@@ -47,11 +63,18 @@ public class GameManager : MonoBehaviour
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
-            endTxt.SetActive(true);
+            endPanel.SetActive(true);
             Time.timeScale = 0.0f;
+            bIsPlaying = false;
         }
 
+        if (time <= fLimitTime && !bIsWarnig)
+        {
+            bIsWarnig = true;
+            anim.SetBool("bIsWarning", true);
+        }
     }
+
 
     public void Matched()
     {
@@ -65,7 +88,7 @@ public class GameManager : MonoBehaviour
             if (cardCount == 0)
             {
                 Time.timeScale = 0.0f;
-                endTxt.SetActive(true);
+                endPanel.SetActive(true);
             }
         }
         else

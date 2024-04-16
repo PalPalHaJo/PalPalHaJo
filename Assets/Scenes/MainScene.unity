@@ -212,8 +212,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1227596970}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1145327663
@@ -306,7 +305,7 @@ RectTransform:
   m_Children:
   - {fileID: 1340201126}
   - {fileID: 1691527098}
-  m_Father: {fileID: 519420032}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -722,11 +721,16 @@ MonoBehaviour:
   timeTxt: {fileID: 1340201124}
   fDelayTime: 1
   endTxt: {fileID: 0}
+  anim: {fileID: 0}
+  StageLv: 1
+  recordText: {fileID: 0}
+  bIsPlaying: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1227596970}
   - {fileID: 1229395009}
   - {fileID: 2117721468}
   - {fileID: 1145327663}

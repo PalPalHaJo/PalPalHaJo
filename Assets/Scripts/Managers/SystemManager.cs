@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SystemManager : MonoBehaviour
 {
     public static SystemManager instance;
+    
+    DataManager s_DataManager = new DataManager();
+    public static DataManager data { get{ return SystemManager.instance.s_DataManager; }}
+
+    SoundManager s_SoundManager = new SoundManager();
+    public static SoundManager sound { get { return SystemManager.instance.s_SoundManager; }}
 
     public SaveData saveData;
     public BgmType[] bgmList;
@@ -28,6 +35,7 @@ public class SystemManager : MonoBehaviour
     void Start()
     {
         soundManager.PlayBGM(bgmList[0]);
+        data.LoadToJson();
     }
 
     void Update()
