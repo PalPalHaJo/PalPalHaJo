@@ -14,8 +14,10 @@ public class Card : MonoBehaviour
     [SerializeField]
     float fCountDownTime = 3.0f;
 
+    // 앞면 이미지
     public SpriteRenderer FrontImage;
-
+    // 배치될 좌표
+    public Vector3 EndPos;
     // 카드 효과 음악
     AudioSource audioSource;
     public AudioClip clip;
