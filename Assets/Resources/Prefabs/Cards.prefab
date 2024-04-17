@@ -517,6 +517,7 @@ MonoBehaviour:
   anim: {fileID: 6388370706275962894}
   fCountDownTime: 3
   FrontImage: {fileID: 6064403508606778189}
+  EndPos: {x: 0, y: 0}
   BackImage: {fileID: 5182314463544267651}
   clip: {fileID: 8300000, guid: 55f48849b9b954e4286afdc6110e1bc1, type: 3}
 --- !u!95 &6388370706275962894

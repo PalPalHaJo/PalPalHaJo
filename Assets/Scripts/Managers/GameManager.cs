@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
+        firstCard.StopAllCoroutines();
         // 성공
         if(firstCard.idx == secondCard.idx) 
         {
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
             secondCard.CloseCard(fDelayTime);
         }
         
-        firstCard = null;
-        secondCard = null;
+        //firstCard = null;
+        //secondCard = null;
     }
 }
