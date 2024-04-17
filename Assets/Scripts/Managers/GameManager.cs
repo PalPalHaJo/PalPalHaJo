@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip correctClip;
     public AudioClip wrongClip;
+    public AudioClip warningClip;
 
     private void Awake()
     {
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         {
             bIsWarnig = true;
             anim.SetBool("bIsWarning", true);
+            audioSource.PlayOneShot(warningClip); // 시간 촉박 효과음
         }
     }
 

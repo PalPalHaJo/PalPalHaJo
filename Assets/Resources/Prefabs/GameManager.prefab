@@ -59,6 +59,7 @@ MonoBehaviour:
   bIsPlaying: 0
   correctClip: {fileID: 8300000, guid: 00a770f027fa5d342bb1aac735fafbc9, type: 3}
   wrongClip: {fileID: 8300000, guid: d7e20f4f5a8f9a245a358a4c95d976b1, type: 3}
+  warningClip: {fileID: 8300000, guid: 482f130f94da2c249a74d9998e4221f8, type: 3}
 --- !u!82 &-5051897035975431128
 AudioSource:
   m_ObjectHideFlags: 0
