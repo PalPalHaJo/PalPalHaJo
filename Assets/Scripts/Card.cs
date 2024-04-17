@@ -26,16 +26,15 @@ public class Card : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine(ThrowAboutCard());
-    }
 
-    IEnumerator ThrowAboutCard()
+    }
+    public IEnumerator Move()
     {
         float fMoveTime = 0f;
-        while (fMoveTime >= 1.0f)
+        while (fMoveTime <= 1.0f)
         {
             fMoveTime += Time.deltaTime;
-            transform.position = Vector2.Lerp(transform.position, EndPos, fMoveTime);  
+            transform.position = Vector2.Lerp(transform.position, EndPos, fMoveTime);
             yield return null;
         }
     }

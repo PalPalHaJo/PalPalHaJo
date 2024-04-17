@@ -17,6 +17,8 @@ public class Board : MonoBehaviour
     [Tooltip("카드 배치 시작 Y 좌표")]
     [SerializeField] float startY = -1.9f;    // 시작 y좌표
 
+    List<GameObject> cards = new List<GameObject>();
+
     void Start()
     {
         // 카드 숫자 배열 생성
@@ -32,15 +34,26 @@ public class Board : MonoBehaviour
             float y = (i / 4) * interval + startY;
 
             GameObject go = Instantiate(card, this.transform); // 임시 변수
-
-            
             go.GetComponent<Card>().EndPos = new Vector2(x, y); // 배치
             go.GetComponent<Card>().Setting(arr[i]);
+            cards.Add(go);
         }
 
         //게임끝내기 위한 배열 수 읽어오기
         GameManager.instance.cardCount = arr.Length;
+
+        StartCoroutine(ThrowAboutCard());
     }
+
+    IEnumerator ThrowAboutCard()
+    {
+        for(int i = 0; i < cards.Count; i++) 
+        {
+            StartCoroutine(cards[i].GetComponent<Card>().Move());
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
     // Fisher-Yates 셔플 알고리즘을 사용하여 무작위로 섞는 함수
     void ShuffleArray<T>(T[] array)
     {
