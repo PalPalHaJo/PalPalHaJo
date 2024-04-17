@@ -66,10 +66,13 @@ public class GameManager : MonoBehaviour
         recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
         Time.timeScale = 1.0f;
+        timeTxt.text = 30.ToString("N2");
     }
 
     void Update()
     {
+        if (!bIsPlaying)
+            return;
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
