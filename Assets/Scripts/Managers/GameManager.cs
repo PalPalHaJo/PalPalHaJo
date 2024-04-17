@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
             secondCard.DestoryCard();
             //카드가 맞으면 cardCount 에서 2 빼기
             cardCount -= 2;
+            StartCoroutine(DelayTextClear(fDelayTime)); // 이름 텍스트 지우는 코루틴
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
             if (cardCount == 0)
             {
@@ -136,15 +137,26 @@ public class GameManager : MonoBehaviour
             time -= 0.5f;
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
+            StartCoroutine(DelayTextClear(fDelayTime)); // 실패 텍스트 지우는 코루틴
         }
         
         //firstCard = null;
         //secondCard = null;
     }
 
+    //END 판넬에 들어갈 시도횟수, 점수 표기
     public void GameOver()
     {
         tryTxt.text = cardTry.ToString("N0");
         scoreTxt.text = (cardTry + time - cardCount + 80).ToString("N0");
+    }
+
+    //이름과 실패 텍스트를 일정 시간 후 지워주는 코루틴
+    IEnumerator DelayTextClear(float fTime2)
+    {
+        //일정 시간을 기다린 후
+        yield return new WaitForSeconds(fTime2);
+        //텍스트 값 비우기
+        nameTxt.text = "";
     }
 }
