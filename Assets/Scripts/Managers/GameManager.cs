@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     //이름 띄울 텍스트
     public Text nameTxt;
     public TextMeshProUGUI tryTxt; // 시도횟수 텍스트
+    public TextMeshProUGUI scoreTxt; // 점수 텍스트
 
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
@@ -76,13 +77,14 @@ public class GameManager : MonoBehaviour
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+        tryTxt.text = cardTry.ToString("N0"); // END판넬에 시도 횟수 띄우기
+        scoreTxt.text = (-cardTry + time - cardCount + 100).ToString("N0"); // 점수띄우기
 
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
             endPanel.SetActive(true);
             Time.timeScale = 0.0f;
-            tryTxt.text = cardTry.ToString("N0");
             bIsPlaying = false;
         }
 
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
             nameTxt.text = nameArray[firstCard.idx];
             firstCard.DestoryCard();
             secondCard.DestoryCard();
+            time += 1.0f; // 성공시 시간 늘리기
             //카드가 맞으면 cardCount 에서 2 빼기
             cardCount -= 2;
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
@@ -120,12 +123,13 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(wrongClip); // 실패 효과음
             nameTxt.text = "실패-0.5s"; // 실패 띄우기
-            cardTry += 1; // 실패시 시도횟수 추가
+            time -= 0.5f; // 실패시 시간 줄어들기
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
         }
-        
+        cardTry += 1; // 매칭 시도시 시도횟수 추가
         firstCard = null;
         secondCard = null;
+        
     }
 }
