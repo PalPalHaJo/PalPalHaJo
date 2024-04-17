@@ -32,7 +32,9 @@ public class Board : MonoBehaviour
             float y = (i / 4) * interval + startY;
 
             GameObject go = Instantiate(card, this.transform); // 임시 변수
-            go.transform.position = new Vector2(x, y); // 배치
+
+            
+            go.GetComponent<Card>().EndPos = new Vector2(x, y); // 배치
             go.GetComponent<Card>().Setting(arr[i]);
         }
 

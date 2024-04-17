@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
     // 앞면 이미지
     public SpriteRenderer FrontImage;
     // 배치될 좌표
-    public Vector3 EndPos;
+    public Vector2 EndPos;
     // 카드 효과 음악
     AudioSource audioSource;
     public AudioClip clip;
@@ -26,8 +26,19 @@ public class Card : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        StartCoroutine(ThrowAboutCard());
     }
 
+    IEnumerator ThrowAboutCard()
+    {
+        float fMoveTime = 0f;
+        while (fMoveTime >= 1.0f)
+        {
+            fMoveTime += Time.deltaTime;
+            transform.position = Vector2.Lerp(transform.position, EndPos, fMoveTime);  
+            yield return null;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
