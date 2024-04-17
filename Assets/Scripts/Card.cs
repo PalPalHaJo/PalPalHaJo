@@ -22,10 +22,11 @@ public class Card : MonoBehaviour
     // 카드 효과 음악
     AudioSource audioSource;
     public AudioClip clip;
-
+    Card card;
     // Start is called before the first frame update
     void Start()
     {
+        card = GetComponent<Card>();
         audioSource = GetComponent<AudioSource>();
         StartCoroutine(PlayAnim());
     }
@@ -64,7 +65,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (!GameManager.instance.bIsPlaying)
+        if (!GameManager.instance.bIsPlaying || (GameManager.instance.firstCard != null && GameManager.instance.secondCard != null))
             return;
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
@@ -91,7 +92,7 @@ public class Card : MonoBehaviour
     }
 
     //5초 후 첫번째 선택하는 카드를 되돌림
-    IEnumerator CountDown()
+    public IEnumerator CountDown()
     {
         //'fCountDownTime'초 대기 후
         yield return new WaitForSeconds(fCountDownTime);
@@ -113,6 +114,7 @@ public class Card : MonoBehaviour
     {
         //딜레이 시간만큼 기다린 후
         yield return new WaitForSeconds(GameManager.instance.fDelayTime);
+        InitCardStorage();
         //게임 오브젝트를 파괴
         Destroy(gameObject);
     }
@@ -132,9 +134,23 @@ public class Card : MonoBehaviour
         yield return new WaitForSeconds(fTime);
         //카드의 애니메이션 상태를 Idle로 되돌린다.
         anim.SetBool("isOpen", false);
+        InitCardStorage();
         //그림이 있는 앞면 오브젝트를 비활성화 한다.
         front.SetActive(false);
         //'?'가 적힌 뒷면 오브젝트를 활성화 한다.
         back.SetActive(true);
+
+    }
+
+    void InitCardStorage()
+    {
+        if (GameManager.instance.firstCard == card)
+        {
+            GameManager.instance.firstCard = null;
+        }
+        else if(GameManager.instance.secondCard == card)
+        {
+            GameManager.instance.secondCard = null;
+        }
     }
 }
