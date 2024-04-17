@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     float time = 30.0f;
     //카드 매칭 시도횟수
     public int cardTry = 0;
+    //이름 띄울 텍스트
+    public Text nameTxt;
 
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
@@ -63,6 +65,9 @@ public class GameManager : MonoBehaviour
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
+
+        //이름 배열 선언하기
+        string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
