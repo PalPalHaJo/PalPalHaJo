@@ -868,6 +868,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 547376577221760705, guid: 2170bd061d0c7e44e96749d3bc31e98b, type: 3}
   m_PrefabInstance: {fileID: 2145160604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2145160606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3753176437216310344, guid: 2170bd061d0c7e44e96749d3bc31e98b, type: 3}
+  m_PrefabInstance: {fileID: 2145160604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2137375247363326216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -927,7 +938,7 @@ PrefabInstance:
     - target: {fileID: 1313133577311735675, guid: 6ea63512fc2fcc84c9fab8e9a60b5af6, type: 3}
       propertyPath: nameTxt
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2145160606}
     - target: {fileID: 1313133577311735675, guid: 6ea63512fc2fcc84c9fab8e9a60b5af6, type: 3}
       propertyPath: timeTxt
       value: 
