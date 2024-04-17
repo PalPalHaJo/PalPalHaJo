@@ -52,6 +52,8 @@ public class Board : MonoBehaviour
             StartCoroutine(cards[i].GetComponent<Card>().Move());
             yield return new WaitForSeconds(0.1f);
         }
+        yield return new WaitForSeconds(1f);
+        GameManager.instance.bIsPlaying = true;
     }
 
     // Fisher-Yates 셔플 알고리즘을 사용하여 무작위로 섞는 함수

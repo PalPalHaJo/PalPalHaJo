@@ -11,7 +11,6 @@ public class Card : MonoBehaviour
 
     public Animator anim;
 
-
     [SerializeField]
     float fCountDownTime = 3.0f;
 
@@ -28,8 +27,9 @@ public class Card : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
+        StartCoroutine(PlayAnim());
     }
+
     public IEnumerator Move()
     {
         float fMoveTime = 0f;
@@ -40,6 +40,16 @@ public class Card : MonoBehaviour
             yield return null;
         }
     }
+
+    IEnumerator PlayAnim()
+    {
+        while (!GameManager.instance.bIsPlaying)
+        {
+            yield return null;
+        }
+        anim.SetBool("isArrive", true);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +64,8 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
+        if (!GameManager.instance.bIsPlaying)
+            return;
         audioSource.PlayOneShot(clip);
         anim.SetBool("isOpen", true);
         front.SetActive(true);
@@ -65,12 +77,16 @@ public class Card : MonoBehaviour
             //두번쨰 카드 선택까지 카운트 다운하는 코루틴 시작
             StartCoroutine(CountDown());
         }
-        else
+        else if(GameManager.instance.secondCard == null)
         {
             //두번째 카드 선택시 코루틴 중단
             StopCoroutine(CountDown());
             GameManager.instance.secondCard = this;
             GameManager.instance.Matched();
+        }
+        else
+        {
+            return;
         }
     }
 
