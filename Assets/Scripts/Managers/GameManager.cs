@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     //게임 플레이 여부
     public bool bIsPlaying = false;
 
+    // 카드 효과 음악
+    AudioSource audioSource;
+    public AudioClip correctClip;
+    public AudioClip wrongClip;
+
     private void Awake()
     {
         //싱글톤 만들기
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
@@ -86,8 +92,10 @@ public class GameManager : MonoBehaviour
 
     public void Matched()
     {
+        // 성공
         if(firstCard.idx == secondCard.idx) 
         {
+            audioSource.PlayOneShot(correctClip); // 성공 효과음
             firstCard.DestoryCard();
             secondCard.DestoryCard();
             //카드가 맞으면 cardCount 에서 2 빼기
@@ -99,8 +107,9 @@ public class GameManager : MonoBehaviour
                 endPanel.SetActive(true);
             }
         }
-        else
+        else // 실패
         {
+            audioSource.PlayOneShot(wrongClip); // 실패 효과음
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
         }
