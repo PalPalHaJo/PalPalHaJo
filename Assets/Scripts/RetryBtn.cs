@@ -9,5 +9,7 @@ public class RetryBtn : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("MainScene");
+        // 인게임 배경음악 재생
+        SystemManager.sound.PlayBGM(SystemManager.instance.bgmList[1]); 
     }
 }
