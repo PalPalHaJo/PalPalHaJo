@@ -73,8 +73,6 @@ public class GameManager : MonoBehaviour
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
 
-        //이름 배열 선언하기
-        string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time < 0.0f)
         {
@@ -98,6 +96,10 @@ public class GameManager : MonoBehaviour
         if(firstCard.idx == secondCard.idx) 
         {
             audioSource.PlayOneShot(correctClip); // 성공 효과음
+            //이름 배열 선언하기
+            string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
+            //이름 띄우기
+            nameTxt.text = nameArray[firstCard.idx];
             firstCard.DestoryCard();
             secondCard.DestoryCard();
             //카드가 맞으면 cardCount 에서 2 빼기
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
             audioSource.PlayOneShot(wrongClip); // 실패 효과음
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
+            nameTxt.text = "실패"; // 실패 띄우기
         }
         
         firstCard = null;
