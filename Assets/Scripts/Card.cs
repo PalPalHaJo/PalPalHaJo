@@ -11,10 +11,12 @@ public class Card : MonoBehaviour
 
     public Animator anim;
 
+
     [SerializeField]
     float fCountDownTime = 3.0f;
 
     public SpriteRenderer FrontImage;
+    public SpriteRenderer BackImage; // BackImage 변수 할당
 
     // 카드 효과 음악
     AudioSource audioSource;
@@ -92,6 +94,7 @@ public class Card : MonoBehaviour
     {
         //DelayClose()코루틴을 시작해라
         StartCoroutine(DelayClose(fTime));
+        BackImage.color = new Color32(255, 166, 0, 255); // 카드가 닫혔을시 지정색으로 바뀜
     }
 
     //카드 뒤집기를 fDelayTime만큼 지연 후 실행하는 코루틴
