@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int cardTry = 0;
     //이름 띄울 텍스트
     public Text nameTxt;
+    public TextMeshProUGUI tryTxt; // 시도횟수 텍스트
 
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
         {
             endPanel.SetActive(true);
             Time.timeScale = 0.0f;
+            tryTxt.text = cardTry.ToString("N0");
             bIsPlaying = false;
         }
 
@@ -114,9 +116,10 @@ public class GameManager : MonoBehaviour
         else // 실패
         {
             audioSource.PlayOneShot(wrongClip); // 실패 효과음
+            nameTxt.text = "실패-0.5s"; // 실패 띄우기
+            cardTry += 1; // 실패시 시도횟수 추가
             firstCard.CloseCard(fDelayTime);
             secondCard.CloseCard(fDelayTime);
-            nameTxt.text = "실패"; // 실패 띄우기
         }
         
         firstCard = null;
