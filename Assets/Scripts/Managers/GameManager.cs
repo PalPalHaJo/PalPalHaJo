@@ -78,9 +78,10 @@ public class GameManager : MonoBehaviour
         timeTxt.text = time.ToString("N2");
 
         //게임시간이 0초가 되면 멈추고 END 띄우기
-        if (time < 0.0f)
+        if (time <= 0.0f)
         {
             endPanel.SetActive(true);
+            timeTxt.text = 0.ToString("N2");
             Time.timeScale = 0.0f;
             bIsPlaying = false;
             GameOver();
@@ -114,6 +115,14 @@ public class GameManager : MonoBehaviour
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
             if (cardCount == 0)
             {
+                //최단 기록 달성 시 
+                if (SystemManager.instance.saveData.stage[StageLv - 1].fClearTime < time)
+                {
+                    //현재 남은 시간을 데이터에 기록
+                    SystemManager.instance.saveData.stage[StageLv - 1].fClearTime = time;
+                    //제이슨파일에 저장
+                    SystemManager.data.SaveToJson();
+                }
                 Time.timeScale = 0.0f;
                 endPanel.SetActive(true);
                 GameOver();
