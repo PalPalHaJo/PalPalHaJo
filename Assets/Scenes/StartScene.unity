@@ -208,12 +208,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 400148413}
-        m_TargetAssemblyTypeName: UI_Base, Assembly-CSharp
-        m_MethodName: OnStagePanel
-        m_Mode: 1
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnUIPanerl
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 143392610}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage
       objectReference: {fileID: 0}
+    - target: {fileID: 6530690371867232479, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 400148413}
     - target: {fileID: 6850293876692893571, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -799,7 +803,6 @@ GameObject:
   - component: {fileID: 1384496013}
   - component: {fileID: 1384496012}
   - component: {fileID: 1384496011}
-  - component: {fileID: 1384496010}
   - component: {fileID: 1384496009}
   - component: {fileID: 1384496014}
   m_Layer: 5
@@ -844,18 +847,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.27058825}
   m_EffectDistance: {x: 30, y: -30}
   m_UseGraphicAlpha: 1
---- !u!114 &1384496010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384496007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1ead670b87766e48b393e1b429bb964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1384496011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,8 +891,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1384496014}
-        m_TargetAssemblyTypeName: UI_Base, Assembly-CSharp
+      - m_Target: {fileID: 400148413}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnApplicationQuit
         m_Mode: 1
         m_Arguments:
@@ -962,7 +953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30af942e1aaffed4a80976ad7fca7c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagePanel: {fileID: 0}
 --- !u!1 &1556765697
 GameObject:
   m_ObjectHideFlags: 0
