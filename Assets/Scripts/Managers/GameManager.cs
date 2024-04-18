@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
         if (!bIsPlaying)
             return;
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수

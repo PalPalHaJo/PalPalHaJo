@@ -29,4 +29,14 @@ public class SoundManager
 
         audioSource.Play(); // 지속적인 재생
     }
+
+    public void SoundMute(AudioSource audio , bool bIsMute)
+    {
+        audio.mute = bIsMute;
+    }
+
+    public void VolumeControl(AudioSource audio, float fSize = 0.5f)
+    {
+
+    }
 }
