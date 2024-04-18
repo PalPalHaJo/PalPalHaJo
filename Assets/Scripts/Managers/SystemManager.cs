@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SystemManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class SystemManager : MonoBehaviour
 
     UIManager s_UIManager = new UIManager();
     public static UIManager ui { get { return SystemManager.instance.s_UIManager; } }
+
+    StageManager s_StageManager = new StageManager();
+    public static StageManager stage { get { return SystemManager.instance.s_StageManager; } }
 
     public SaveData saveData;
     public BgmType[] bgmList;
