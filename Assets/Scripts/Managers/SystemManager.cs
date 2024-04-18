@@ -23,6 +23,7 @@ public class SystemManager : MonoBehaviour
     public SaveData saveData;
     public BgmType[] bgmList;
     public AudioSource sysAudio;
+    public int StageLv = 1;
 
     // public SoundManager SM => instance.soundManager; // 간단하게 가져올 수 있게함
     private void Awake()
