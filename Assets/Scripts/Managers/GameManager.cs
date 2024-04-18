@@ -46,11 +46,18 @@ public class GameManager : MonoBehaviour
     public bool bIsPlaying = false;
 
     // 카드 효과 음악
-    AudioSource audioSource;
+    public AudioSource audioSourceCaution , audioSourceCard;
     public AudioClip correctClip;
     public AudioClip wrongClip;
     public AudioClip warningClip;
 
+    //UI요소 이벤트 넣기위한 변수
+    public Button[] retryBtn;
+    public Button settingBtn, stageBtn, closeBtn;
+    public Toggle muteToggle;
+    public Slider bgSoundSlider, effectSoundSlider;
+    //환경설정 화면
+    public GameObject SettingPanel;
     private void Awake()
     {
         //싱글톤 만들기
@@ -61,7 +68,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        
+        EventInit();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
@@ -92,10 +100,27 @@ public class GameManager : MonoBehaviour
         {
             bIsWarnig = true;
             anim.SetBool("bIsWarning", true);
-            audioSource.PlayOneShot(warningClip); // 시간 촉박 효과음
+            audioSourceCaution.PlayOneShot(warningClip); // 시간 촉박 효과음
         }
     }
 
+    void EventInit()
+    {
+        retryBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
+        retryBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
+        settingBtn.onClick.AddListener(() => SystemManager.ui.OnUIPanerl(SettingPanel));
+        stageBtn.onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
+        closeBtn.onClick.AddListener(() => SystemManager.ui.OffUIPanerl(SettingPanel));
+        muteToggle.onValueChanged.AddListener(delegate { SystemManager.sound.SoundMute(audioSourceCaution, muteToggle.isOn); });
+        muteToggle.onValueChanged.AddListener(delegate { SystemManager.sound.SoundMute(audioSourceCard, muteToggle.isOn); });
+        muteToggle.onValueChanged.AddListener(delegate { SystemManager.sound.SoundMute(SystemManager.instance.sysAudio, muteToggle.isOn); });
+        bgSoundSlider.onValueChanged.AddListener(delegate { SystemManager.sound.VolumeControl(SystemManager.instance.sysAudio, 1, bgSoundSlider.value); });
+        effectSoundSlider.onValueChanged.AddListener(
+            delegate { SystemManager.sound.VolumeControl(audioSourceCaution, 2, effectSoundSlider.value);
+                       SystemManager.sound.VolumeControl(audioSourceCard, 2, effectSoundSlider.value);
+                      });
+        
+    }
 
     public void Matched()
     {
@@ -103,7 +128,7 @@ public class GameManager : MonoBehaviour
         // 성공
         if(firstCard.idx == secondCard.idx) 
         {
-            audioSource.PlayOneShot(correctClip); // 성공 효과음
+            audioSourceCard.PlayOneShot(correctClip); // 성공 효과음
             //이름 배열 선언하기
             string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
             //이름 띄우기
@@ -128,11 +153,11 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0.0f;
                 endPanel.SetActive(true);
                 GameOver();
-}
+            }
         }
         else // 실패
         {
-            audioSource.PlayOneShot(wrongClip); // 실패 효과음
+            audioSourceCard.PlayOneShot(wrongClip); // 실패 효과음
             nameTxt.text = "실패-0.5s"; // 실패 띄우기
             cardTry += 1; // 실패시 시도횟수 추가
             time -= 0.5f;

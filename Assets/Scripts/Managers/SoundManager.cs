@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 배경음악 이름, 클립 묶음
 [System.Serializable]
@@ -32,11 +33,20 @@ public class SoundManager
 
     public void SoundMute(AudioSource audio , bool bIsMute)
     {
-        audio.mute = bIsMute;
+         audio.mute = bIsMute;
     }
 
-    public void VolumeControl(AudioSource audio, float fSize = 0.5f)
+    public void VolumeControl(AudioSource audio, int nKind ,float fSize = 0.5f)
     {
-
+        audio.volume = fSize;
+        if (nKind == (int)Define.SoundAudio.Background)
+        {
+            SystemManager.instance.saveData.sounds.fBgSoundSize = fSize;
+        }
+        else if (nKind == (int)Define.SoundAudio.Effect)
+        {
+            SystemManager.instance.saveData.sounds.fEffectSoundSize = fSize;
+        }
+        SystemManager.data.SaveToJson();
     }
 }
