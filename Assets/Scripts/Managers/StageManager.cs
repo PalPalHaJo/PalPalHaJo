@@ -15,9 +15,9 @@ public class StageManager : MonoBehaviour
     int stageLv = 1;   // 현재 스테이지
     Image curStageImg; // 현재 스테이지 이미지
 
-    public void StartStage()
+    public void StartStage(GameObject stage)
     {
-        stageTxt = GetComponentInChildren<TMP_Text>();
+        stageTxt = stage.GetComponentInChildren<TMP_Text>();
         Debug.Log(stageTxt);
         Debug.Log(stageTxt.text);
         stageLv = int.Parse(stageTxt.text); // text -> int 형변환
