@@ -33,6 +33,15 @@ public class DataManager
 public class SaveData
 {
     public Stage[] stage;
+    public Sounds sounds;
+}
+
+[System.Serializable]
+public class Sounds
+{
+    public bool bIsMute = false;
+    public float fBgSoundSize = 0.5f;
+    public float fEffectSoundSize = 0.5f;
 }
 
 [System.Serializable]

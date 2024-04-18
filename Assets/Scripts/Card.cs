@@ -27,8 +27,8 @@ public class Card : MonoBehaviour
     void Start()
     {
         card = GetComponent<Card>();
-        audioSource = GetComponent<AudioSource>();
         StartCoroutine(PlayAnim());
+        audioSource = GameManager.instance.audioSourceCard;
     }
 
     public IEnumerator Move()
