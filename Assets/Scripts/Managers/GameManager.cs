@@ -96,14 +96,18 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
 
+        //제한시간보다 현재시간이 작고 경고가 활성화 되지 않았다면
         if (time <= fLimitTime && !bIsWarnig)
         {
+            //경고값 참으로 변경
             bIsWarnig = true;
+            //경고 애니메이션 실행
             anim.SetBool("bIsWarning", true);
             audioSourceCaution.PlayOneShot(warningClip); // 시간 촉박 효과음
         }
     }
 
+    //각 버튼의 클리과 슬라이더 및 토글의 값 변화에 따른 실행 이벤트 삽입
     void EventInit()
     {
         retryBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));

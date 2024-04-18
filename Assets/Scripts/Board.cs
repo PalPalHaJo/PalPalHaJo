@@ -48,18 +48,21 @@ public class Board : MonoBehaviour
 
         //게임끝내기 위한 배열 수 읽어오기
         GameManager.instance.cardCount = arr.Length;
-
+        //카드를 보드에 펼치기 위한 코루틴
         StartCoroutine(ThrowAboutCard());
     }
 
+    //카드를 보드에 펼치기 위한 코루틴
     IEnumerator ThrowAboutCard()
     {
+        //반복문과 지연을 활용하여 카드를 순차적으로 펼친다.
         for(int i = 0; i < cards.Count; i++) 
         {
             StartCoroutine(cards[i].GetComponent<Card>().Move());
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
+        //게임을 시작한다.
         GameManager.instance.bIsPlaying = true;
     }
 

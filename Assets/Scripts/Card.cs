@@ -31,6 +31,7 @@ public class Card : MonoBehaviour
         audioSource = GameManager.instance.audioSourceCard;
     }
 
+    //카드가 실제로 펼쳐져 이동하는 코루틴
     public IEnumerator Move()
     {
         float fMoveTime = 0f;
@@ -41,7 +42,8 @@ public class Card : MonoBehaviour
             yield return null;
         }
     }
-
+        
+    //게임이 시작되면 카드의 애니메이션 활성화
     IEnumerator PlayAnim()
     {
         while (!GameManager.instance.bIsPlaying)
@@ -65,11 +67,16 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
+        //게임 플레이 중이 아니거나 두개의 카드를 뒤집은 상태라면 리턴을 통해 카드오픈을 막는다. 
         if (!GameManager.instance.bIsPlaying || (GameManager.instance.firstCard != null && GameManager.instance.secondCard != null))
             return;
+        //카드 뒤집는 효과음 재생
         audioSource.PlayOneShot(clip);
+        //카드 뒤집는 애니메이션 재생
         anim.SetBool("isOpen", true);
+        //카드 앞면 활성화
         front.SetActive(true);
+        //카드 뒷면 비활성화
         back.SetActive(false);
 
         if (GameManager.instance.firstCard == null)
@@ -142,6 +149,7 @@ public class Card : MonoBehaviour
 
     }
 
+    //이 카드가 게임매니저의 카드 공간에 있는 카드와 같다면 공간을 널로 바꿔준다.
     void InitCardStorage()
     {
         if (GameManager.instance.firstCard == card)

@@ -14,6 +14,7 @@ public class BtnEvents : MonoBehaviour
         EventInit();
     }
 
+    //각종 이벤트 UI에 해당하는 이벤트 삽입
     public void EventInit()
     {
         startBtn.onClick.AddListener(() => SystemManager.ui.OnUIPanerl(stagePanel));
