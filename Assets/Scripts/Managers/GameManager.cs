@@ -68,8 +68,7 @@ public class GameManager : MonoBehaviour
         }
     }
     void Start()
-    {
-        
+    {      
         EventInit();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;

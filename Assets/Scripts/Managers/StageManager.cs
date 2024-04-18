@@ -9,23 +9,19 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
-    public GameObject[] stages;
+    public Button[] stages;
 
     TMP_Text stageTxt;
     int stageLv = 1;   // 현재 스테이지
     Image curStageImg; // 현재 스테이지 이미지
 
-    public void StartStage(GameObject stage)
+    // 해당 스테이지로 게임시작
+    public void StartStage(Button stage, int stageLv)
     {
-        stageTxt = stage.GetComponentInChildren<TMP_Text>();
-        stageLv = int.Parse(stageTxt.text); // text -> int 형변환
-
-        // 스테이지 1 or 선택한 스테이지가 해금 상태
-        if (stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 1].bIsClear == true)
+        if(stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 2].bIsClear == true)
         {
             SystemManager.ui.TransitionScene(1);
         }
-        // 선택한 스테이지가 잠금 상태(아무것도 안함)
     }
 
     // 스테이지 해금
@@ -34,8 +30,12 @@ public class StageManager : MonoBehaviour
         curStageImg = GetComponent<Image>();
         curStageImg.sprite = Resources.Load<Sprite>("UI/Lvl/lvl_block_hover");
 
-        // 스테이지 숫자와 별이미지 활성화
-        stages[stageLv-1].GetComponentInChildren<TMP_Text>().gameObject.SetActive(true);
-        stages[stageLv-1].GetComponentInChildren<Image>().gameObject.SetActive(true);
+        // 스테이지, 별이미지 활성화
+        SystemManager.instance.saveData.stage[stageLv - 1].bIsClear = true;
+        stages[stageLv - 1].GetComponentInChildren<TMP_Text>().gameObject.SetActive(true);
+        stages[stageLv - 1].GetComponentInChildren<Image>().gameObject.SetActive(true);
+
+        //제이슨파일에 저장
+        SystemManager.data.SaveToJson();
     }
 }
