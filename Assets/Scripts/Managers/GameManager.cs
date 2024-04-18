@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
     public AudioClip warningClip;
 
     //UI요소 이벤트 넣기위한 변수
-    public Button[] retryBtn;
-    public Button settingBtn, stageBtn, closeBtn;
+    public Button[] retryBtn, stageBtn;
+    public Button settingBtn, closeBtn;
     public Toggle muteToggle;
     public Slider bgSoundSlider, effectSoundSlider;
     //환경설정 화면
@@ -110,7 +110,8 @@ public class GameManager : MonoBehaviour
         retryBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
         retryBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
         settingBtn.onClick.AddListener(() => SystemManager.ui.OnUIPanerl(SettingPanel));
-        stageBtn.onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
+        stageBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
+        stageBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
         closeBtn.onClick.AddListener(() => SystemManager.ui.OffUIPanerl(SettingPanel));
         muteToggle.onValueChanged.AddListener(delegate { SystemManager.sound.SoundMute(audioSourceCaution, muteToggle.isOn); });
         muteToggle.onValueChanged.AddListener(delegate { SystemManager.sound.SoundMute(audioSourceCard, muteToggle.isOn); });

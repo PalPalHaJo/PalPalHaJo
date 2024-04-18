@@ -834,17 +834,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2480679384499744153, guid: c1bb7979066cb594fa7519f3335f9b62, type: 3}
   m_PrefabInstance: {fileID: 246423825737082882}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1929366204 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 167781022228893462, guid: c1bb7979066cb594fa7519f3335f9b62, type: 3}
-  m_PrefabInstance: {fileID: 246423825737082882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2145160604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1287,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 1313133577311735675, guid: 6ea63512fc2fcc84c9fab8e9a60b5af6, type: 3}
       propertyPath: retryBtn.Array.data[1]
       value: 
-      objectReference: {fileID: 1929366204}
+      objectReference: {fileID: 431839178}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1315,6 +1304,10 @@ PrefabInstance:
     - target: {fileID: 2519948259387848195, guid: 7cdaa66652b8fa2429d5c16fef07e605, type: 3}
       propertyPath: m_Name
       value: EndPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519948259387848195, guid: 7cdaa66652b8fa2429d5c16fef07e605, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4743568497644087156, guid: 7cdaa66652b8fa2429d5c16fef07e605, type: 3}
       propertyPath: m_Pivot.x
