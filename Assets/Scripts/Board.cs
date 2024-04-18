@@ -8,8 +8,8 @@ public class Board : MonoBehaviour
 {
     [Tooltip("카드 프리팹")]
     public GameObject card;         // 카드 프리팹
-    [Tooltip("생성할 카드의 총수량, 4배수만 가능")]
-    [SerializeField] int totalCardCnt = 16;   // 총 카드 수량
+    //[Tooltip("생성할 카드의 총수량, 4배수만 가능")]
+    //[SerializeField]  = 16;   
     [Tooltip("카드 간격")]
     [SerializeField] float interval = 1.2f;   // 카드 간격
     [Tooltip("카드 배치 시작 X 좌표")]
@@ -19,8 +19,12 @@ public class Board : MonoBehaviour
 
     List<GameObject> cards = new List<GameObject>();
 
+    int totalCardCnt; // 총 카드 수량
+
     void Start()
     {
+        // 현재 스테이지의 총 카드 수량
+        totalCardCnt = SystemManager.instance.saveData.stage[GameManager.instance.StageLv - 1].iTotalCardCnt;
         // 카드 숫자 배열 생성
         int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15};
         // 카드 숫자 배열을 무작위로 섞는다
