@@ -50,6 +50,19 @@ MonoBehaviour:
     - bIsClear: 0
       fClearTime: 0
       fScore: 0
+      iTotalCardCnt: 8
+    - bIsClear: 0
+      fClearTime: 0
+      fScore: 0
+      iTotalCardCnt: 16
+    - bIsClear: 0
+      fClearTime: 0
+      fScore: 0
+      iTotalCardCnt: 24
+    - bIsClear: 0
+      fClearTime: 0
+      fScore: 0
+      iTotalCardCnt: 32
   bgmList:
   - name: IntroBGM
     clip: {fileID: 8300000, guid: ecf32e7da80937e42a8f03b355cb7fd6, type: 3}
