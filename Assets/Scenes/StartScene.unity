@@ -5468,17 +5468,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 781015753}
     m_Modifications:
-    - target: {fileID: 3647511652553036672, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: stageLv
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3647511652553036672, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5209858788290370995, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
       propertyPath: m_Name
       value: Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530690371867232479, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530690371867232479, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530690371867232479, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1800411363}
+    - target: {fileID: 6530690371867232479, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6850293876692893571, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
       propertyPath: m_Pivot.x
@@ -5560,40 +5568,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7763028549108965804, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: stageLv
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7763028549108965804, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7877549907423543334, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: stageLv
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7877549907423543334, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500355160846443327, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_text
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8621500313183443868, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_text
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8755492717469125345, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: stageLv
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8755492717469125345, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7877549907423543334, guid: 70e0aecc50b4b9540a76dfb499aa350b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5890,6 +5865,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 8484249946376328873, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
   m_PrefabInstance: {fileID: 1844549488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1800411363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4038190521474654536, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
+  m_PrefabInstance: {fileID: 1844549488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1844549488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5942,10 +5922,6 @@ PrefabInstance:
       propertyPath: sysAudio
       value: 
       objectReference: {fileID: 1701577428}
-    - target: {fileID: 3989709995473529176, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
-      propertyPath: saveData.stage.Array.data[0].iTotalCardCnt
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 4038190521474654536, guid: fe79cc15f4b4a684f8ddf0262fc8fc77, type: 3}
       propertyPath: m_Name
       value: SystemManager
@@ -6387,5 +6363,4 @@ SceneRoots:
   - {fileID: 2093470175}
   - {fileID: 1844549488}
   - {fileID: 8011647669667530763}
-  - {fileID: 5865028417205596122}
   - {fileID: 258882139}
