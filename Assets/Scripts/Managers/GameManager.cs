@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +18,11 @@ public class GameManager : MonoBehaviour
 
     //게임 시간 셋팅하기
     public Text timeTxt;
+    //타이머 시계
+    public Image timerImg;
     //30초에서 시간 줄어들기
     float time = 30.0f;
+    
     public int cardTry = 0; //카드 매칭 시도횟수
     //이름 띄울 텍스트
     public Text nameTxt;
@@ -68,7 +71,8 @@ public class GameManager : MonoBehaviour
         }
     }
     void Start()
-    {      
+    {
+        SetCamera();
         EventInit();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
@@ -77,6 +81,30 @@ public class GameManager : MonoBehaviour
         timeTxt.text = 30.ToString("N2");
     }
 
+    public void SetCamera()
+    {
+        Camera cam = Camera.main;
+        if(StageLv == 1) 
+        {
+            cam.orthographicSize = 5;
+            cam.transform.position = new Vector3(cam.transform.position.x, -1.5f ,cam.transform.position.z);
+        }
+        else if(StageLv == 2)
+        {
+            Camera.main.orthographicSize = 5;
+            cam.transform.position = new Vector3(cam.transform.position.x, 0, cam.transform.position.z);
+        }
+        else if(StageLv == 3)
+        {
+            Camera.main.orthographicSize = 6;
+            cam.transform.position = new Vector3(cam.transform.position.x, 1.5f , cam.transform.position.z);
+        }
+        else
+        {
+            Camera.main.orthographicSize = 8;
+            cam.transform.position = new Vector3(cam.transform.position.x, 3, cam.transform.position.z);
+        }
+    }
     void Update()
     {
         
@@ -85,7 +113,7 @@ public class GameManager : MonoBehaviour
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-
+        timerImg.fillAmount = time / 30.0f;
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time <= 0.0f)
         {
@@ -135,7 +163,7 @@ public class GameManager : MonoBehaviour
         {
             audioSourceCard.PlayOneShot(correctClip); // 성공 효과음
             //이름 배열 선언하기
-            string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
+            string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" , "성지윤", "김현수", "안보연", "이강혁", "성지윤", "김현수", "안보연", "이강혁" };
             //이름 띄우기
             nameTxt.text = nameArray[firstCard.idx];
             time += 1.0f;
@@ -145,7 +173,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             StartCoroutine(DelayTextClear(fDelayTime)); // 이름 텍스트 지우는 코루틴
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
-            if (cardCount == SystemManager.instance.saveData.stage[StageLv - 1].iTotalCardCnt - 2)
+            if (cardCount == 0)
             {
                 //최단 기록 달성 시 
                 if (SystemManager.instance.saveData.stage[StageLv - 1].fClearTime < time)
