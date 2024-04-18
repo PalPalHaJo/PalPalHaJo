@@ -20,8 +20,9 @@ public class StageManager
     // 클리어한 스테이지 상태 저장
     public void CelarStage(int stageLv)
     {
+        // 클리어 상태로 변경
         SystemManager.instance.saveData.stage[stageLv - 1].bIsClear = true;
-        //제이슨파일에 저장
+        // 제이슨파일에 저장
         SystemManager.data.SaveToJson();
     }
 }
