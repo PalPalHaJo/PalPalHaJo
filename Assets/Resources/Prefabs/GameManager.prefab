@@ -54,6 +54,7 @@ MonoBehaviour:
   nameTxt: {fileID: 0}
   tryTxt: {fileID: 0}
   scoreTxt: {fileID: 0}
+  mainCamera: {fileID: 0}
   fDelayTime: 1
   endPanel: {fileID: 0}
   anim: {fileID: 0}
@@ -68,13 +69,15 @@ MonoBehaviour:
   retryBtn:
   - {fileID: 0}
   - {fileID: 0}
+  stageBtn:
+  - {fileID: 0}
   settingBtn: {fileID: 0}
-  stageBtn: {fileID: 0}
   closeBtn: {fileID: 0}
   muteToggle: {fileID: 0}
   bgSoundSlider: {fileID: 0}
   effectSoundSlider: {fileID: 0}
   SettingPanel: {fileID: 0}
+  stageManager: {fileID: 189518714398114076, guid: 3ac493e5b677d0742b6beb9c60f59778, type: 3}
 --- !u!82 &-5051897035975431128
 AudioSource:
   m_ObjectHideFlags: 0
