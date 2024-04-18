@@ -97,12 +97,12 @@ public class GameManager : MonoBehaviour
         else if(StageLv == 3)
         {
             Camera.main.orthographicSize = 6;
-            cam.transform.position = new Vector3(cam.transform.position.x, -1.5f , cam.transform.position.z);
+            cam.transform.position = new Vector3(cam.transform.position.x, 1.5f , cam.transform.position.z);
         }
         else
         {
-            Camera.main.orthographicSize = 7;
-            cam.transform.position = new Vector3(cam.transform.position.x, -2, cam.transform.position.z);
+            Camera.main.orthographicSize = 8;
+            cam.transform.position = new Vector3(cam.transform.position.x, 3, cam.transform.position.z);
         }
     }
     void Update()
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
         {
             audioSourceCard.PlayOneShot(correctClip); // 성공 효과음
             //이름 배열 선언하기
-            string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" };
+            string[] nameArray = { "이강혁", "안보연", "김현수", "안보연", "김현수", "성지윤", "성지윤", "이강혁" , "성지윤", "김현수", "안보연", "이강혁", "성지윤", "김현수", "안보연", "이강혁" };
             //이름 띄우기
             nameTxt.text = nameArray[firstCard.idx];
             time += 1.0f;
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             StartCoroutine(DelayTextClear(fDelayTime)); // 이름 텍스트 지우는 코루틴
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
-            if (cardCount == SystemManager.instance.saveData.stage[StageLv - 1].iTotalCardCnt - 2)
+            if (cardCount == 0)
             {
                 //최단 기록 달성 시 
                 if (SystemManager.instance.saveData.stage[StageLv - 1].fClearTime < time)
