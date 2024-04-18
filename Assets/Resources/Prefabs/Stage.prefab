@@ -312,7 +312,6 @@ GameObject:
   - component: {fileID: 4761686811213180985}
   - component: {fileID: 8593401050434070741}
   - component: {fileID: 6530690371867232479}
-  - component: {fileID: 7877549907423543334}
   m_Layer: 5
   m_Name: Stage1
   m_TagString: Untagged
@@ -423,19 +422,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7877549907423543334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3448342293976126116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a17b8314b25f44a9aab2c03e6cdf09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageLv: 1
 --- !u!1 &3542531274092355164
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a17b8314b25f44a9aab2c03e6cdf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLv: 2
+  stageLv: 1
 --- !u!1 &5158050530419643446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +1044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c4be2afab03a4447b67a4ffd093c7d5, type: 2}
   m_sharedMaterial: {fileID: -1758511320771976059, guid: 8c4be2afab03a4447b67a4ffd093c7d5, type: 2}
@@ -1352,7 +1338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c4be2afab03a4447b67a4ffd093c7d5, type: 2}
   m_sharedMaterial: {fileID: -1758511320771976059, guid: 8c4be2afab03a4447b67a4ffd093c7d5, type: 2}
@@ -1690,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a17b8314b25f44a9aab2c03e6cdf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLv: 3
+  stageLv: 2
 --- !u!1 &7259353015553788650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,7 +1812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a17b8314b25f44a9aab2c03e6cdf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageLv: 4
+  stageLv: 3
 --- !u!1 &7341781942946145218
 GameObject:
   m_ObjectHideFlags: 0

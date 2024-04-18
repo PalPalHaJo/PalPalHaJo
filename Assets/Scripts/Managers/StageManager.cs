@@ -11,7 +11,8 @@ public class StageManager
     // 해당 스테이지로 게임시작
     public void StartStage(int stageLv)
     {
-        if(stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 1].bIsClear == true)
+        SystemManager.instance.StageLv = stageLv;
+        if(stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 2].bIsClear == true)
         {
             SystemManager.ui.TransitionScene(1);
         }

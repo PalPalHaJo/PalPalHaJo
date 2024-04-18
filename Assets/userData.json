@@ -2,19 +2,19 @@
   "stage": [
     {
       "bIsClear": false,
-      "fClearTime": 292.7491760253906,
+      "fClearTime": 0,
       "fScore": 0.0,
       "iTotalCardCnt": 8
     },
     {
       "bIsClear": false,
-      "fClearTime": 282.92425537109377,
+      "fClearTime": 0,
       "fScore": 0.0,
       "iTotalCardCnt": 16
     },
     {
       "bIsClear": false,
-      "fClearTime": 27.633098602294923,
+      "fClearTime": 0.0,
       "fScore": 0.0,
       "iTotalCardCnt": 24
     },
@@ -27,7 +27,7 @@
   ],
   "sounds": {
     "bIsMute": false,
-    "fBgSoundSize": 0.20319640636444093,
+    "fBgSoundSize": 0,
     "fEffectSoundSize": 0.0
   }
 }
