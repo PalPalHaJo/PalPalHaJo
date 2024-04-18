@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Text nameTxt;
     public TextMeshProUGUI tryTxt; // 시도횟수 텍스트
     public TextMeshProUGUI scoreTxt; // 점수 텍스트
+    public Camera mainCamera; //배경화면을 조절할 카메라
 
     //카드 파괴 지연시간
     public float fDelayTime = 1.0f;
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
         {
             audioSource.PlayOneShot(wrongClip); // 실패 효과음
             nameTxt.text = "실패-0.5s"; // 실패 띄우기
+            StartCoroutine(FailBackgroundColor());
             cardTry += 1; // 실패시 시도횟수 추가
             time -= 0.5f;
             firstCard.CloseCard(fDelayTime);
@@ -158,5 +160,17 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(fTime2);
         //텍스트 값 비우기
         nameTxt.text = "";
+    }
+
+    IEnumerator FailBackgroundColor()
+    {
+        //원래 배경색을 저장하고
+        Color originalColor = mainCamera.backgroundColor;
+        //실패시 색 변경
+        mainCamera.backgroundColor = Color.red;
+        //일정시간 대기
+        yield return new WaitForSeconds(0.5f);
+        //원래대로 복구
+        mainCamera.backgroundColor = originalColor;
     }
 }
