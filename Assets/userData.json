@@ -14,7 +14,7 @@
     },
     {
       "bIsClear": false,
-      "fClearTime": 17.615964889526368,
+      "fClearTime": 27.633098602294923,
       "fScore": 0.0,
       "iTotalCardCnt": 24
     },
@@ -27,7 +27,7 @@
   ],
   "sounds": {
     "bIsMute": false,
-    "fBgSoundSize": 0.5456620454788208,
-    "fEffectSoundSize": 0.5022830963134766
+    "fBgSoundSize": 0.20319640636444093,
+    "fEffectSoundSize": 0.0
   }
 }
