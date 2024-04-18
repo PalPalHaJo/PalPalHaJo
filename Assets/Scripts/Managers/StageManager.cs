@@ -18,10 +18,8 @@ public class StageManager : MonoBehaviour
     public void StartStage(GameObject stage)
     {
         stageTxt = stage.GetComponentInChildren<TMP_Text>();
-        Debug.Log(stageTxt);
-        Debug.Log(stageTxt.text);
         stageLv = int.Parse(stageTxt.text); // text -> int 형변환
-        Debug.Log(stageLv);
+
         // 스테이지 1 or 선택한 스테이지가 해금 상태
         if (stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 1].bIsClear == true)
         {
