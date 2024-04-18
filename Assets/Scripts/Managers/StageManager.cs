@@ -25,9 +25,9 @@ public class StageManager : MonoBehaviour
         // 스테이지 1 or 선택한 스테이지가 해금 상태
         if (stageLv == 1 || SystemManager.instance.saveData.stage[stageLv - 1].bIsClear == true)
         {
-            TransitionScene(1);
+            SystemManager.ui.TransitionScene(1);
         }
-            // 선택한 스테이지가 잠금 상태(아무것도 안함)
+        // 선택한 스테이지가 잠금 상태(아무것도 안함)
     }
 
     // 스테이지 해금
@@ -39,11 +39,5 @@ public class StageManager : MonoBehaviour
         // 스테이지 숫자와 별이미지 활성화
         stages[stageLv-1].GetComponentInChildren<TMP_Text>().gameObject.SetActive(true);
         stages[stageLv-1].GetComponentInChildren<Image>().gameObject.SetActive(true);
-    }
-
-    public void TransitionScene(int SceneNum)
-    {
-        SceneManager.LoadScene(SceneNum);
-        SystemManager.sound.PlayBGM(SystemManager.instance.bgmList[SceneNum]);
     }
 }
