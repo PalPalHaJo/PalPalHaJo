@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -86,23 +86,23 @@ public class GameManager : MonoBehaviour
         Camera cam = Camera.main;
         if(StageLv == 1) 
         {
-            cam.orthographicSize = ;
-            cam.transform.position = new Vector3(cam.transform.position.x, ,cam.transform.position.z);
+            cam.orthographicSize = 5;
+            cam.transform.position = new Vector3(cam.transform.position.x, -1.5f ,cam.transform.position.z);
         }
-        if(StageLv == 2)
+        else if(StageLv == 2)
         {
-            Camera.main.orthographicSize = ;
-            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+            Camera.main.orthographicSize = 5;
+            cam.transform.position = new Vector3(cam.transform.position.x, 0, cam.transform.position.z);
         }
-        if (StageLv == 3)
+        else if(StageLv == 3)
         {
-            Camera.main.orthographicSize = ;
-            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+            Camera.main.orthographicSize = 6;
+            cam.transform.position = new Vector3(cam.transform.position.x, -1.5f , cam.transform.position.z);
         }
         else
         {
-            Camera.main.orthographicSize = ;
-            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+            Camera.main.orthographicSize = 7;
+            cam.transform.position = new Vector3(cam.transform.position.x, -2, cam.transform.position.z);
         }
     }
     void Update()
