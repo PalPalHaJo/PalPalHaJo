@@ -31,22 +31,28 @@ public class SoundManager
         audioSource.Play(); // 지속적인 재생
     }
 
+    //음소거를 위한 메소드
     public void SoundMute(AudioSource audio , bool bIsMute)
     {
          audio.mute = bIsMute;
     }
 
+    //배경음 혹은 효과음의 크기를 조절하고 데이터에 저장하는 메소드
     public void VolumeControl(AudioSource audio, int nKind ,float fSize = 0.5f)
     {
+        //오디오 소스의 볼륨을 조절한다.
         audio.volume = fSize;
         if (nKind == (int)Define.SoundAudio.Background)
         {
+            //배경음의 크기 정보를 매니저가 갖고 있는 데이터에 저장한다.
             SystemManager.instance.saveData.sounds.fBgSoundSize = fSize;
         }
         else if (nKind == (int)Define.SoundAudio.Effect)
         {
+            //배경음의 크기 정보를 매니저가 갖고 있는 데이터에 저장한다.
             SystemManager.instance.saveData.sounds.fEffectSoundSize = fSize;
         }
+        //json 저장파일에 매니저가 갖고 있는 데이터로 저장한다.
         SystemManager.data.SaveToJson();
     }
 }
