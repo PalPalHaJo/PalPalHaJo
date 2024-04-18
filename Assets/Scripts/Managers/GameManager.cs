@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     //경고 텍스트 애니메이션
     public Animator anim;
 
-    public int StageLv = 1;
+    public static int StageLv = 1;
     //최고 기록 텍스트
     public TextMeshProUGUI recordText;
     //게임 플레이 여부
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             StartCoroutine(DelayTextClear(fDelayTime)); // 이름 텍스트 지우는 코루틴
             //카드를 전부 맞추면 게임 멈추고 END 띄우기
-            if (cardCount == 0)
+            if (cardCount == SystemManager.instance.saveData.stage[StageLv - 1].iTotalCardCnt - 2)
             {
                 //최단 기록 달성 시 
                 if (SystemManager.instance.saveData.stage[StageLv - 1].fClearTime < time)
@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour
                     SystemManager.data.SaveToJson();
                 }
                 Time.timeScale = 0.0f;
+                SystemManager.stage.CelarStage(StageLv++);
                 endPanel.SetActive(true);
                 GameOver();
             }
