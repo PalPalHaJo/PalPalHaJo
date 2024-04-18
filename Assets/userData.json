@@ -1,1 +1,33 @@
-{"stage":[{"bIsClear":true,"fClearTime":292.7491760253906,"fScore":0.0,"iTotalCardCnt":8},{"bIsClear":true,"fClearTime":282.92425537109377,"fScore":0.0,"iTotalCardCnt":16},{"bIsClear":true,"fClearTime":17.615964889526368,"fScore":0.0,"iTotalCardCnt":24},{"bIsClear":true,"fClearTime":0.0,"fScore":0.0,"iTotalCardCnt":32}],"sounds":{"bIsMute":false,"fBgSoundSize":0.5456620454788208,"fEffectSoundSize":0.5022830963134766}}
+{
+  "stage": [
+    {
+      "bIsClear": false,
+      "fClearTime": 292.7491760253906,
+      "fScore": 0.0,
+      "iTotalCardCnt": 8
+    },
+    {
+      "bIsClear": false,
+      "fClearTime": 282.92425537109377,
+      "fScore": 0.0,
+      "iTotalCardCnt": 16
+    },
+    {
+      "bIsClear": false,
+      "fClearTime": 17.615964889526368,
+      "fScore": 0.0,
+      "iTotalCardCnt": 24
+    },
+    {
+      "bIsClear": false,
+      "fClearTime": 0.0,
+      "fScore": 0.0,
+      "iTotalCardCnt": 32
+    }
+  ],
+  "sounds": {
+    "bIsMute": false,
+    "fBgSoundSize": 0.5456620454788208,
+    "fEffectSoundSize": 0.5022830963134766
+  }
+}
