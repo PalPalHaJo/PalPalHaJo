@@ -18,8 +18,11 @@ public class GameManager : MonoBehaviour
 
     //게임 시간 셋팅하기
     public Text timeTxt;
+    //타이머 시계
+    public Image timerImg;
     //30초에서 시간 줄어들기
     float time = 30.0f;
+    
     public int cardTry = 0; //카드 매칭 시도횟수
     //이름 띄울 텍스트
     public Text nameTxt;
@@ -69,7 +72,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        SetCamera();
         EventInit();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
@@ -78,6 +81,30 @@ public class GameManager : MonoBehaviour
         timeTxt.text = 30.ToString("N2");
     }
 
+    public void SetCamera()
+    {
+        Camera cam = Camera.main;
+        if(StageLv == 1) 
+        {
+            cam.orthographicSize = ;
+            cam.transform.position = new Vector3(cam.transform.position.x, ,cam.transform.position.z);
+        }
+        if(StageLv == 2)
+        {
+            Camera.main.orthographicSize = ;
+            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+        }
+        if (StageLv == 3)
+        {
+            Camera.main.orthographicSize = ;
+            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+        }
+        else
+        {
+            Camera.main.orthographicSize = ;
+            cam.transform.position = new Vector3(cam.transform.position.x, , cam.transform.position.z);
+        }
+    }
     void Update()
     {
         
@@ -86,7 +113,7 @@ public class GameManager : MonoBehaviour
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-
+        timerImg.fillAmount = time / 30.0f;
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time <= 0.0f)
         {
