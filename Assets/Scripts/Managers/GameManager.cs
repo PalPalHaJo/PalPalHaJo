@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class GameManager : MonoBehaviour
     //타이머 시계
     public Image timerImg;
     //30초에서 시간 줄어들기
-    float time = 30.0f;
+    float time = 0;
+    float fTotalTime = 0;
     
     public int cardTry = 0; //카드 매칭 시도횟수
     //이름 띄울 텍스트
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
     //경고 텍스트 애니메이션
     public Animator anim;
 
-    public static int StageLv = 1;
+    public int StageLv = 1;
     //최고 기록 텍스트
     public TextMeshProUGUI recordText;
     //게임 플레이 여부
@@ -72,20 +74,23 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        StageLv = SystemManager.instance.StageLv;
+        Debug.Log(StageLv);
         SetCamera();
         EventInit();
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
         Time.timeScale = 1.0f;
-        timeTxt.text = 30.ToString("N2");
+        timeTxt.text = fTotalTime.ToString("N2");
     }
 
     public void SetCamera()
     {
+        time = fTotalTime = StageLv * 20.0f;
         Camera cam = Camera.main;
         if(StageLv == 1) 
-        {
+        {            
             cam.orthographicSize = 5;
             cam.transform.position = new Vector3(cam.transform.position.x, -1.5f ,cam.transform.position.z);
         }
@@ -113,7 +118,7 @@ public class GameManager : MonoBehaviour
         //시간 흐르게 하기, 노출 시간 소숫점 두자릿수
         time -= Time.deltaTime;
         timeTxt.text = time.ToString("N2");
-        timerImg.fillAmount = time / 30.0f;
+        timerImg.fillAmount = time / fTotalTime;
         //게임시간이 0초가 되면 멈추고 END 띄우기
         if (time <= 0.0f)
         {
@@ -138,8 +143,8 @@ public class GameManager : MonoBehaviour
     //각 버튼의 클리과 슬라이더 및 토글의 값 변화에 따른 실행 이벤트 삽입
     void EventInit()
     {
-        retryBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
-        retryBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(StageLv));
+        retryBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(1));
+        retryBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(1));
         settingBtn.onClick.AddListener(() => SystemManager.ui.OnUIPanerl(SettingPanel));
         stageBtn[0].onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
         stageBtn[1].onClick.AddListener(() => SystemManager.ui.TransitionScene(0));
@@ -184,7 +189,7 @@ public class GameManager : MonoBehaviour
                     SystemManager.data.SaveToJson();
                 }
                 Time.timeScale = 0.0f;
-                SystemManager.stage.CelarStage(StageLv++);
+                SystemManager.stage.CelarStage(StageLv);
                 endPanel.SetActive(true);
                 GameOver();
             }
