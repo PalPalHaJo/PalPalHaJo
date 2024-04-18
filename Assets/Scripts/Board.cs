@@ -22,9 +22,9 @@ public class Board : MonoBehaviour
     void Start()
     {
         // 카드 숫자 배열 생성
-        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
+        int[] arr = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15};
         // 카드 숫자 배열을 무작위로 섞는다
-        ShuffleArray(arr);
+        ShuffleArray(arr.Take(totalCardCnt).ToArray()); // 배열은 카드의 총수량만큼 크기제한
 
         // 카드 배치, 한 줄당 4장씩
         for (int i = 0; i < totalCardCnt; i++)

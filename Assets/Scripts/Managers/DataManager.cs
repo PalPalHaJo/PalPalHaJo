@@ -50,4 +50,5 @@ public class Stage
     public bool bIsClear = false;
     public float fClearTime = 0;
     public float fScore = 0;
+    public int iTotalCardCnt = 0;
 }
