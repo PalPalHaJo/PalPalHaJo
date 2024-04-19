@@ -35,8 +35,8 @@ public class DataManager
 [System.Serializable]
 public class SaveData
 {
-    public Stage[] stage;
-    public Sounds sounds;
+    public Stage[] stage = new Stage[4];
+    public Sounds sounds = new Sounds();
 }
 
 //게임 내 사운드 정보를 저장 클래스

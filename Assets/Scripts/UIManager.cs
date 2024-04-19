@@ -29,7 +29,7 @@ public class UIManager
     public void TransitionScene(int SceneNum)
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneNum);
+        SceneManager.LoadScene(SceneNum);        
         SystemManager.sound.PlayBGM(SystemManager.instance.bgmList[SceneNum]);
     }
 }
