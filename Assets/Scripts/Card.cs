@@ -53,11 +53,6 @@ public class Card : MonoBehaviour
         anim.SetBool("isArrive", true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Setting(int number)
     {

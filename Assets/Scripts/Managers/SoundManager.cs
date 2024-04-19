@@ -34,7 +34,9 @@ public class SoundManager
     //음소거를 위한 메소드
     public void SoundMute(AudioSource audio , bool bIsMute)
     {
-         audio.mute = bIsMute;
+        audio.mute = bIsMute;
+        SystemManager.instance.saveData.sounds.bIsMute = bIsMute;
+        SystemManager.data.SaveToJson();
     }
 
     //배경음 혹은 효과음의 크기를 조절하고 데이터에 저장하는 메소드

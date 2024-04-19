@@ -71,13 +71,12 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        EventInit();
     }
     void Start()
     {
         StageLv = SystemManager.instance.StageLv;
-        Debug.Log(StageLv);
-        SetCamera();
-        EventInit();
+        SetCamera();        
         string strFormat = SystemManager.instance.saveData.stage[StageLv - 1].fClearTime.ToString("N2");
         recordText.text = strFormat;
         //게임 시작하기 위한 시간 셋팅
@@ -157,7 +156,15 @@ public class GameManager : MonoBehaviour
             delegate { SystemManager.sound.VolumeControl(audioSourceCaution, 2, effectSoundSlider.value);
                        SystemManager.sound.VolumeControl(audioSourceCard, 2, effectSoundSlider.value);
                       });
-        
+        SetLoadUI();
+    }
+
+    void SetLoadUI()
+    {
+        Sounds sounds  =  SystemManager.instance.saveData.sounds;
+        muteToggle.isOn = sounds.bIsMute;
+        bgSoundSlider.value = sounds.fBgSoundSize;
+        effectSoundSlider.value = sounds.fEffectSoundSize;
     }
 
     public void Matched()
@@ -205,9 +212,6 @@ public class GameManager : MonoBehaviour
             secondCard.CloseCard(fDelayTime);
             StartCoroutine(DelayTextClear(fDelayTime)); // 실패 텍스트 지우는 코루틴
         }
-        
-        //firstCard = null;
-        //secondCard = null;
     }
 
     //END 판넬에 들어갈 시도횟수, 점수 표기
