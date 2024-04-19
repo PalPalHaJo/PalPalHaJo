@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BtnEvents : MonoBehaviour
 {
-    public Button startBtn, quitBtn, returnBtn;
+    public Button startBtn, quitBtn, returnBtn, initDataBtn;
     public Button stage1, stage2, stage3, stage4;
     public GameObject stagePanel;
     // Start is called before the first frame update
@@ -25,5 +25,4 @@ public class BtnEvents : MonoBehaviour
         stage3.onClick.AddListener(() => SystemManager.stage.StartStage(3));
         stage4.onClick.AddListener(() => SystemManager.stage.StartStage(4));
     }
-
 }

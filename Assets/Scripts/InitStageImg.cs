@@ -11,8 +11,6 @@ public class InitStageImg : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(SystemManager.instance.saveData.stage.Length);
-        Debug.Log(stageLv);
         if (SystemManager.instance.saveData.stage[stageLv-1].bIsClear == true)
         {
             gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/Lvl/lvl_block_hover"); // 해금된 이미지
