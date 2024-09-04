@@ -2,8 +2,6 @@
 <br/>
 
 # <p align="center"> **2D 카드 뒤집기 게임 - 88한 팀 찾기**  </p>
-
-##### <p align="center"> <b> Team: Da-Chall-Op-Da </b>
 ##### <p align="center"> <b> ![image](https://github.com/user-attachments/assets/418135bd-c686-4cdf-9d99-36b5bd08b74c) </b>
 
 ---
